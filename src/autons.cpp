@@ -48,3 +48,49 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
+// Robot autos
+// this section will contain all of our autos like match auto (15 second), alternate match auto (15 second), elim auto (15 second) and skills (60 second)
+
+// Competion autos
+// red side autos
+void left_side_auto() {
+  // code here
+}
+
+void bottom_side_auto() {
+  // code here
+}
+
+// alternate red side autos
+void left_side_alt_auto() {
+  // code here
+}
+
+void bottom_side_alt_auto() {
+  // code here
+}
+
+// blue side autos
+void right_side_auto() {
+  // code here
+}
+
+void top_side_auto() {
+  // code here
+}
+
+// alternate blue side autos
+void right_side_alt_auto() {
+  // code here
+}
+
+void top_side_alt_auto() {
+  // code here
+}
+
+//TODO: add elim autos for red and blue later
+
+// skills 
+void skills_auto() {
+  // code here
+}
