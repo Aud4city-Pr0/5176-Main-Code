@@ -2,6 +2,7 @@
 
 #include "EZ-Template/api.hpp"
 #include "api.h"
+#include "pros/rotation.hpp"
 
 extern Drive chassis;
 
@@ -9,3 +10,4 @@ extern Drive chassis;
 
 // inline pros::Motor intake(1);
 // inline pros::adi::DigitalIn limit_switch('A');
+inline pros::Rotation testRotation(15);

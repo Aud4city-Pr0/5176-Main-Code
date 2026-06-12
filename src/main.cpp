@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include "helpers.hpp"
+#include "subsystems.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -233,6 +234,8 @@ void opcontrol() {
   while (true) {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
+
+    print_rot_value(testRotation.get_angle());
 
     chassis.opcontrol_tank();  // Tank control
     // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
