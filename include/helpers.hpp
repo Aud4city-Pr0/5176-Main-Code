@@ -1,4 +1,5 @@
 #pragma once
+#include "pros/rotation.hpp"
 //-----------------------------------------
 // File name: helpers.hpp
 // Creation date: 6/12/26
@@ -6,4 +7,6 @@
 // Description: Contains some helper functions for the robot
 //-----------------------------------------
 
-void print_rot_value(int value);
+// prints out current value of rotation sensor
+// TODO: rewrite to return int and do math with a rotation sensor group class
+void print_rot_value(pros::Rotation rotSensor);
