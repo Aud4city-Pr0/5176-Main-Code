@@ -13,7 +13,8 @@
 void print_rot_value(pros::Rotation rotSensor) {
     int converted_val = rotSensor.get_angle() / 100;
     if(converted_val == 360) {
-        rotSensor.reset();
+        // resets rotation sensor
+        rotSensor.reset_position();
     }
-    pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
+    // pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
 }
