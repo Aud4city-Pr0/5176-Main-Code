@@ -16,5 +16,5 @@ void print_rot_value(pros::Rotation rotSensor) {
         // resets rotation sensor
         rotSensor.reset_position();
     }
-    // pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
+    pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
 }

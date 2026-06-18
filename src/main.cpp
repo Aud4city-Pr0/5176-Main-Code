@@ -1,4 +1,5 @@
 #include "main.h"
+#include "autons.hpp"
 #include "helpers.hpp"
 #include "subsystems.hpp"
 /////
@@ -14,7 +15,7 @@ ez::Drive chassis(
 
     7,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
+    360);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
 // Uncomment the trackers you're using here!
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
@@ -59,7 +60,18 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-     // stuff
+     // the auton functions (RED)
+     {"Left Side Auto\n\n[Insert description here]", left_side_auto},
+     {"Left Side Auto Alt\n\n[Insert description here]", left_side_alt_auto},
+     {"Bottom Side Auto\n\n[Insert description here]", bottom_side_auto},
+     {"Bottom Side Auto Alt\n\n[Insert description here]", bottom_side_alt_auto},
+     // the auton functions (BLUE)
+     {"Right Side Auto\n\n[Insert description here]", right_side_auto},
+     {"Right Side Auto Alt\n\n[Insert description here]", right_side_alt_auto},
+     {"Top Side Auto\n\n[Insert description here]", top_side_auto},
+     {"Top Side Auto Alt\n\n[Insert description here]", top_side_alt_auto},
+     // Skills auto
+     {"Skills Auto\n\nThis is our team's skills auto.", skills_auto}
   });
 
   // Initialize chassis and auton selector
