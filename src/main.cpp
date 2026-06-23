@@ -248,7 +248,7 @@ void opcontrol() {
     ez_template_extras();
 
     // TODO: remove later
-    print_rot_value(testRotation);
+    //print_rot_value(testRotation);
 
     chassis.opcontrol_tank();  // Tank control
     // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
