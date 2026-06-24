@@ -2,6 +2,7 @@
 
 #include "EZ-Template/api.hpp"
 #include "api.h"
+#include "pros/abstract_motor.hpp"
 #include "pros/rotation.hpp"
 #include "pros/motors.hpp"
 #include "mechanisums/intake.hpp"
@@ -14,8 +15,8 @@ extern Drive chassis;
 inline pros::Rotation testRotation(15);
 
 // motors
-inline pros::Motor intakeA(8);
-inline pros::Motor intakeB(9);
+inline pros::Motor intakeA(8, pros::v5::MotorGears::green);
+inline pros::Motor intakeB(9, pros::v5::MotorGears::green);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);
