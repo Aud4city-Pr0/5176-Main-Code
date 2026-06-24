@@ -1,5 +1,3 @@
-#include "EZ-Template/util.hpp"
-#include "main.h"
 //-----------------------------------------
 // File name: helpers.cpp
 // Creation date: 6/12/26
@@ -9,12 +7,14 @@
 
 // includes
 //-----------
+#include "main.h"
 #include "mechanisums/intake.hpp"
 #include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
 #include "helpers.hpp"
 #include "subsystems.hpp"
+#include "EZ-Template/util.hpp"
 
 // conversion functions
 void print_rot_value(pros::Rotation rotSensor) {
