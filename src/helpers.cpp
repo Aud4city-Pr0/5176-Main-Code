@@ -1,3 +1,4 @@
+#include "EZ-Template/util.hpp"
 #include "main.h"
 //-----------------------------------------
 // File name: helpers.cpp
@@ -8,11 +9,12 @@
 
 // includes
 //-----------
+#include "mechanisums/intake.hpp"
+#include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
 #include "helpers.hpp"
-#include "pros/motors.hpp"
-#include "mechanisums/intake.hpp"
+#include "subsystems.hpp"
 
 // conversion functions
 void print_rot_value(pros::Rotation rotSensor) {
@@ -25,8 +27,14 @@ void print_rot_value(pros::Rotation rotSensor) {
 }
 
 // helper functions for driver and auto
-
-// contains 
 void driver_control_intake() {
-    // code
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        botIntake.set_intake_direction(IntakeClass::FORWARD);
+        botIntake.set_status(true);
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+        botIntake.set_status(true);
+    } else {
+        botIntake.set_status(false);
+    }
 }
