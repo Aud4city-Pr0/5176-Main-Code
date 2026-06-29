@@ -19,7 +19,6 @@ void IntakeClass::intake::set_status(bool intakeStatus) {
     } else if(intakeStatus == false) {
         IntakeClass::intake::motorA->brake();
         IntakeClass::intake::motorB->brake();
-        IntakeClass::intake::counterMotor->brake();
     }
 }
 
@@ -27,11 +26,9 @@ void IntakeClass::intake::set_status(bool intakeStatus, int speed) {
     if(intakeStatus == true) {
         IntakeClass::intake::motorA->move_voltage(speed);
         IntakeClass::intake::motorB->move_voltage(speed);
-        IntakeClass::intake::counterMotor->move_voltage(speed);
     } else if(intakeStatus == false) {
         IntakeClass::intake::motorA->brake();
         IntakeClass::intake::motorB->brake();
-        IntakeClass::intake::counterMotor->brake();
     }
 }
 
