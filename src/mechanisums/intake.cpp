@@ -16,7 +16,6 @@ void IntakeClass::intake::set_status(bool intakeStatus) {
     if(intakeStatus == true) {
         IntakeClass::intake::motorA->move_voltage(IntakeClass::intake::defaultSpeed);
         IntakeClass::intake::motorB->move_voltage(IntakeClass::intake::defaultSpeed);
-        IntakeClass::intake::counterMotor->move_voltage(IntakeClass::intake::defaultSpeed);
     } else if(intakeStatus == false) {
         IntakeClass::intake::motorA->brake();
         IntakeClass::intake::motorB->brake();
