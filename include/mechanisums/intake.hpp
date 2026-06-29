@@ -25,13 +25,15 @@ namespace IntakeClass {
         int defaultSpeed = 0;
         pros::Motor* motorA;
         pros::Motor* motorB;
+        pros::Motor* counterMotor;
 
         // external variables or functions that can be used or changed by other classes or code in main
         public:
-        // initalizer/constructor function that creates a intake object by taking in two motors and a default speed
-        intake(pros::Motor &inkateMotorA, pros::Motor &intakeMotorB, int intakeDefaultSpeed) {
+        // initalizer/constructor function that creates a intake object by taking in three motors and a default speed
+        intake(pros::Motor &inkateMotorA, pros::Motor &intakeMotorB, pros::Motor &intakeCounterMotor, int intakeDefaultSpeed) {
             motorA = &inkateMotorA;
             motorB = &intakeMotorB;
+            counterMotor = &intakeCounterMotor;
             defaultSpeed = intakeDefaultSpeed;
         }
 
