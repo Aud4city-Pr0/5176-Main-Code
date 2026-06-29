@@ -14,9 +14,10 @@ extern Drive chassis;
 // sensors
 inline pros::Rotation testRotation(15);
 
-// motors
+// motors for intake
 inline pros::Motor intakeA(8, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(9, pros::v5::MotorGears::green);
+inline pros::Motor counterMotor(10, pros::v5::MotorGears::green);
 
 // mechansiums
-inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);
+inline IntakeClass::intake botIntake(intakeA, intakeB, counterMotor, 10000);
