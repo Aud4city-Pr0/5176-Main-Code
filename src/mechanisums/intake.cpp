@@ -35,9 +35,9 @@ void IntakeClass::intake::set_status(bool intakeStatus, int speed) {
 void IntakeClass::intake::set_intake_direction(IntakeClass::Direction intakeDir) {
     if(intakeDir == IntakeClass::FORWARD) {
         IntakeClass::intake::motorA->set_reversed(false);
-        IntakeClass::intake::motorB->set_reversed(false);
+        IntakeClass::intake::motorB->set_reversed(true);
     } else if (intakeDir == IntakeClass::BACKAWRD) {
         IntakeClass::intake::motorA->set_reversed(true);
-        IntakeClass::intake::motorB->set_reversed(true);
+        IntakeClass::intake::motorB->set_reversed(false);
     }
 }
