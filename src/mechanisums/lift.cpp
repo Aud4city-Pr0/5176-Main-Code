@@ -23,6 +23,9 @@ void LiftClass::lift::move_lift_with_status(liftState state) {
         // if state is RAISE, then don't reverse the motor to spin up and run at default speed
         lift::liftMotor->set_reversed(false);
         lift::liftMotor->move_voltage(lift::defaultSpeed);
+    } else if(state == liftState::STOP) {
+        // stoping motor if state is set to STOP
+        lift::liftMotor->brake();
     }
 }
 

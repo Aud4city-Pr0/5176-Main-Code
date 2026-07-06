@@ -15,7 +15,8 @@ namespace LiftClass {
     // lift status enums
     enum liftState {
         LOWER = 0,
-        RAISE = 1
+        RAISE = 1,
+        STOP = 2
     };
 
     class lift {

@@ -13,3 +13,6 @@ void print_rot_value(pros::Rotation rotSensor);
 
 // contains the driver conrtol code for intake
 void driver_control_intake();
+
+// contains the driver control code for lift
+void driver_control_lift();

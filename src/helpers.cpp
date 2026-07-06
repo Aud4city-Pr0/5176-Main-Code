@@ -9,6 +9,7 @@
 //-----------
 #include "main.h"
 #include "mechanisums/intake.hpp"
+#include "mechanisums/lift.hpp"
 #include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
@@ -36,5 +37,15 @@ void driver_control_intake() {
         botIntake.set_status(true);
     } else {
         botIntake.set_status(false);
+    }
+}
+
+void driver_control_lift() {
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        botLift.move_lift_with_status(LiftClass::liftState::RAISE);
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        botLift.move_lift_with_status(LiftClass::liftState::LOWER);
+    } else {
+        botLift.move_lift_with_status(LiftClass::liftState::STOP);
     }
 }
