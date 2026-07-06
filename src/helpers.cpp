@@ -7,7 +7,6 @@
 
 // includes
 //-----------
-#include "main.h"
 #include "mechanisums/intake.hpp"
 #include "mechanisums/lift.hpp"
 #include "pros/misc.h"
