@@ -49,3 +49,7 @@ void driver_control_lift() {
         botLift.move_lift_with_status(LiftClass::liftState::STOP);
     }
 }
+
+void init_the_bot() {
+    botLift.init_lift();
+}
