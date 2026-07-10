@@ -33,7 +33,7 @@ void LiftClass::lift::move_lift_with_pid(int height) {
     //TODO: implement pid and distance sensor code when distance sensor arrives.
 }
 
-void LiftClass::lift::init_lift() {
+void LiftClass::lift::initalize() {
     // initalizes lift motor, pid and sensors
     // setting lift braking to hold so that we can keep our position
     lift::liftMotor->set_brake_mode(pros::MotorBrake::hold);

@@ -34,7 +34,7 @@ namespace LiftClass {
             defaultSpeed = speed;
         }
         // sets up our lift sensors and motor breaking, MUST CALL FIRST BEFORE ANY OTHER LIFT CLASS FUNCTION IN MAIN. DON'T REMOVE!!!!
-        void init_lift();
+        void initalize();
         // moves lift with the liftState enum and not the lift pid+distance sensor.
         void move_lift_with_status(liftState status);
         // move lift with pid and distance sensor to a height in milimeters.
