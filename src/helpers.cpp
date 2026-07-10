@@ -50,5 +50,5 @@ void driver_control_lift() {
 }
 
 void init_the_bot() {
-    botLift.init_lift();
+    botLift.initalize();
 }
