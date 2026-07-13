@@ -18,3 +18,6 @@ void driver_control_intake();
 
 // contains the driver control code for lift
 void driver_control_lift();
+
+// contains the driver control code for the claw arm
+void driver_control_arm();

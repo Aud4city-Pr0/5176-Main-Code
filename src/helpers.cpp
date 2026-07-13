@@ -5,6 +5,14 @@
 // Description: Contains some helper functions for the robot
 //-----------------------------------------
 
+// helper variables
+//------------------
+int positionState = 0;
+
+// helper constant variables
+//----------------------------
+const int MAX_STATE = 4;
+
 // includes
 //-----------
 #include "mechanisums/intake.hpp"
@@ -49,4 +57,19 @@ void driver_control_lift() {
 void init_the_bot() {
     botLift.initalize();
     botClawArm.initalize();
+}
+
+void driver_control_arm() {
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+        // incrementing by one every time when button is pressed  
+        positionState++;
+        // preventing postionState from going outside of array index
+        if(positionState >= MAX_STATE) {
+            positionState = MAX_STATE - 1;
+        }
+        // for debugging
+        pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
+        // calling the arm position function
+        botClawArm.move_to_position(positionState);
+    }
 }
