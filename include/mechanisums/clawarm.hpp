@@ -24,16 +24,14 @@ namespace ArmClass {
         private:
         pros::Motor* armMotor;
         pros::Rotation* armRotation;
-        int speed = 0;
         ez::PID ArmPID{0.45, 0, 0, 0, "Arm"};
 
         // conatains vars and functions that can be acessed publicly by class members or other .cpp file
         public:
-        // the constructor function for the arm class, it takes in a motor, rotation sensor, and a speed value from -127 to 127
-        arm(pros::Motor &clawArmMotor, pros::Rotation &clawArmRotation, int defaultSpeed) {
+        // the constructor function for the arm class, it takes in a motor, rotation sensor
+        arm(pros::Motor &clawArmMotor, pros::Rotation &clawArmRotation) {
             armMotor = &clawArmMotor;
             armRotation = &clawArmRotation;
-            speed = defaultSpeed;
         }
 
         // this function will move the arm based on an int that ranges from 0-4.
