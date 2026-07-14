@@ -25,6 +25,13 @@ ez::Drive chassis(
 // ez::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
+void arm_task(void*) {
+    while (true) {
+      botClawArm.update();
+      pros::delay(ez::util::DELAY_TIME);
+    }
+}
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -37,6 +44,8 @@ void initialize() {
 
   // initing lift and arm sensors
   init_the_bot();
+
+  pros::Task armControllerTask(arm_task);
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 

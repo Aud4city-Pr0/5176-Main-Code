@@ -38,5 +38,6 @@ namespace ArmClass {
         void move_to_position(int position);
         // initalizer function that sets up motor and sensor
         void initalize();
+        void update();
     };
 }

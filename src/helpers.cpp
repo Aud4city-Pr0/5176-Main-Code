@@ -64,8 +64,8 @@ void driver_control_arm() {
         // incrementing by one every time when button is pressed  
         positionState++;
         // preventing postionState from going outside of array index
-        if(positionState >= MAX_STATE) {
-            positionState = MAX_STATE - 1;
+        if (positionState >= MAX_STATE) {
+            positionState = 0;
         }    
         // for debugging
         pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);

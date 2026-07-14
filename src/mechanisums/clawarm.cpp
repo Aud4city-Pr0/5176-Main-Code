@@ -30,12 +30,28 @@ void ArmClass::arm::move_to_position(int position) {
         int converted_angle = get_rotation_value(*armRotation);
         // caclulating motor speed output
         double outputSpeed = ArmPID.compute(converted_angle);
+        // Exit when close enough to target
+        if (abs(real_angle_value - converted_angle) < 5) {
+            break;
+        }
         // moving the motor
         armMotor->move(outputSpeed);
         // wating for task to complete
         pros::delay(ez::util::DELAY_TIME);
     }
+    armMotor->move(0);
 
+}
+
+void ArmClass::arm::update() {
+    // Read current arm position
+    int currentAngle = get_rotation_value(*armRotation);
+
+    // Calculate PID output
+    double outputSpeed = ArmPID.compute(currentAngle);
+
+    // Send power to motor
+    armMotor->move(outputSpeed);
 }
 
 // this function inits the sensors, pid and motor
