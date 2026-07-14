@@ -43,17 +43,6 @@ void ArmClass::arm::move_to_position(int position) {
 
 }
 
-void ArmClass::arm::update() {
-    // Read current arm position
-    int currentAngle = get_rotation_value(*armRotation);
-
-    // Calculate PID output
-    double outputSpeed = ArmPID.compute(currentAngle);
-
-    // Send power to motor
-    armMotor->move(outputSpeed);
-}
-
 // this function inits the sensors, pid and motor
 void ArmClass::arm::initalize() {
     armMotor->set_brake_mode(pros::v5::MotorBrake::hold);
