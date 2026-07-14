@@ -25,6 +25,7 @@ namespace ArmClass {
         pros::Motor* armMotor;
         pros::Rotation* armRotation;
         ez::PID ArmPID{0.45, 0, 0, 0, "Arm"};
+        int angle_target = 0;
 
         // conatains vars and functions that can be acessed publicly by class members or other .cpp file
         public:

@@ -21,9 +21,9 @@
 // this function will move the arm based on an int that ranges from 0-4.
 void ArmClass::arm::move_to_position(int position) {
     // getting angle from array index
-    int real_angle_value = ArmClass::positionArray[position];
+    angle_target = ArmClass::positionArray[position];
     // seting PID target
-    ArmPID.target_set(real_angle_value);
+    ArmPID.target_set(angle_target);
     // preforming computation
     while (true){
         // converting again so that we can have an updated value
@@ -31,7 +31,7 @@ void ArmClass::arm::move_to_position(int position) {
         // caclulating motor speed output
         double outputSpeed = ArmPID.compute(converted_angle);
         // Exit when close enough to target
-        if (abs(real_angle_value - converted_angle) < 5) {
+        if (abs(angle_target - converted_angle) < 5) {
             break;
         }
         // moving the motor
