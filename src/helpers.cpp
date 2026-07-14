@@ -11,7 +11,7 @@ int positionState = 0;
 
 // helper constant variables
 //----------------------------
-const int MAX_STATE = 4;
+const int MAX_STATE = 5;
 
 // includes
 //-----------
@@ -27,7 +27,7 @@ const int MAX_STATE = 4;
 // conversion functions
 int get_rotation_value(pros::Rotation rotSensor) {
     int converted_val = rotSensor.get_angle() / 100;
-    pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
+    //pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
     return converted_val;
 }
 
@@ -60,13 +60,13 @@ void init_the_bot() {
 }
 
 void driver_control_arm() {
-    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         // incrementing by one every time when button is pressed  
         positionState++;
         // preventing postionState from going outside of array index
         if(positionState >= MAX_STATE) {
             positionState = MAX_STATE - 1;
-        }
+        }    
         // for debugging
         pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
         // calling the arm position function

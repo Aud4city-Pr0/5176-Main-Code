@@ -25,7 +25,7 @@ void ArmClass::arm::move_to_position(int position) {
     // seting PID target
     ArmPID.target_set(real_angle_value);
     // preforming computation
-    while (ArmPID.exit_condition(*armMotor, true) == ez::RUNNING){
+    while (true){
         // converting again so that we can have an updated value
         int converted_angle = get_rotation_value(*armRotation);
         // caclulating motor speed output
@@ -42,7 +42,6 @@ void ArmClass::arm::move_to_position(int position) {
 void ArmClass::arm::initalize() {
     armMotor->set_brake_mode(pros::v5::MotorBrake::hold);
     armMotor->tare_position();
-    armRotation->reset_position();
     ArmPID.exit_condition_set(5, 10);
 }
 
