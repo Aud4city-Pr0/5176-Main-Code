@@ -74,7 +74,7 @@ void initialize() {
      {"Top Side Auto\n\n[Insert description here]", top_side_auto},
      {"Top Side Auto Alt\n\n[Insert description here]", top_side_alt_auto},
      // Skills auto
-     {"Skills Auto\n\nThis is our team's skills auto.", skills_auto}
+     {"Mother of All MatchLoads M.O.A.M. (Skills Auto)\n\nHaha matchloader go brrrrrrrrrrrrrrrr", skills_auto}
   });
 
   // Initialize chassis and auton selector
