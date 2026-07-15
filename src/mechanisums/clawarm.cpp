@@ -46,6 +46,7 @@ void ArmClass::arm::move_to_position(int position) {
 // this function inits the sensors, pid and motor
 void ArmClass::arm::initalize() {
     armMotor->set_brake_mode(pros::v5::MotorBrake::hold);
+    armRotation->reset_position();
     armMotor->tare_position();
     ArmPID.exit_condition_set(5, 10);
 }
