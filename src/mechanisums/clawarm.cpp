@@ -23,7 +23,7 @@
 // this function will move the arm based on an int that ranges from 0-4.
 void ArmClass::arm::move_to_position(int position) {
     // getting angle from array index
-    angle_target = positionArray[position];
+    angle_target = positionArray[position] 
     //pros::screen::print(
     //pros::E_TEXT_MEDIUM,
     //0,
