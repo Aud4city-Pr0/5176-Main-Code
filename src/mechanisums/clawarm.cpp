@@ -21,26 +21,33 @@
 // this function will move the arm based on an int that ranges from 0-4.
 void ArmClass::arm::move_to_position(int position) {
     // getting angle from array index
-    angle_target = ArmClass::positionArray[position];
-    // seting PID target
+    angle_target = positionArray[position];
+    pros::screen::print(
+    pros::E_TEXT_MEDIUM,
+    0,
+    "Index: %d Target: %d",
+    position,
+    angle_target
+    );
+    // setting pid
     ArmPID.target_set(angle_target);
-    // preforming computation
-    while (true){
-        // converting again so that we can have an updated value
-        int converted_angle = get_rotation_value(*armRotation);
-        // caclulating motor speed output
-        double outputSpeed = ArmPID.compute(converted_angle);
-        // Exit when close enough to target
-        if (abs(angle_target - converted_angle) < 5) {
-            break;
-        }
-        // moving the motor
-        armMotor->move(outputSpeed);
-        // wating for task to complete
-        pros::delay(ez::util::DELAY_TIME);
-    }
-    armMotor->move(0);
 
+}
+
+void ArmClass::arm::update_pid() {
+    // getting angle
+    int current_angle = get_rotation_value(*armRotation);
+    // caculating ouput
+    double output = ArmPID.compute(current_angle);
+    //pros::screen::print(pros::E_TEXT_MEDIUM, 0, "Angle: %d", current_angle);
+   pros::screen::print(
+        pros::E_TEXT_MEDIUM,
+        3,
+        "Angle: %d",
+        current_angle
+    );
+    // moving arm motor
+    armMotor->move(output);
 }
 
 // this function inits the sensors, pid and motor

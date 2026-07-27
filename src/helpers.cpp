@@ -59,6 +59,12 @@ void init_the_bot() {
     botClawArm.initalize();
 }
 
+void arm_task() {
+    while (true) {
+        botClawArm.update_pid();
+        pros::delay(10);
+    }
+}
 void driver_control_arm() {
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         // incrementing by one every time when button is pressed  
@@ -68,8 +74,8 @@ void driver_control_arm() {
             positionState = 0;
         }    
         // for debugging
-        pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
+        // pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
         // calling the arm position function
-        botClawArm.move_to_position(positionState);
     }
+    botClawArm.move_to_position(positionState);
 }

@@ -39,6 +39,8 @@ void initialize() {
   init_the_bot();
   //TODO: test code with removed task
 
+  pros::Task armTask(arm_task);
+
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it

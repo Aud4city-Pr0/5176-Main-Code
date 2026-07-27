@@ -16,7 +16,7 @@
 // the Claw arm class
 namespace ArmClass {
     // the position array, will have data after rotation is plugged into brain
-    inline int positionArray[5] = {0, -29, 0, -60, -30};
+    const inline int positionArray[5] = {0, -29, 0, -60, -30};
 
     // The arm class
     class arm {
@@ -24,7 +24,7 @@ namespace ArmClass {
         private:
         pros::Motor* armMotor;
         pros::Rotation* armRotation;
-        ez::PID ArmPID{0.15, 0, 0, 0, "Arm"};
+        ez::PID ArmPID{0.15, 0, 0.05, 0, "Arm"};
         int angle_target = 0;
 
         // conatains vars and functions that can be acessed publicly by class members or other .cpp file
@@ -39,5 +39,7 @@ namespace ArmClass {
         void move_to_position(int position);
         // initalizer function that sets up motor and sensor
         void initalize();
+        // updates pid
+        void update_pid();
     };
 }
