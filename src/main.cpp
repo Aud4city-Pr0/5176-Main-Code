@@ -267,6 +267,8 @@ void opcontrol() {
     driver_control_lift();
     driver_control_arm();
 
+    botClawArm.update_pid();
+
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

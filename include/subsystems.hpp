@@ -19,7 +19,7 @@ inline pros::Rotation armRotationSensor(15);
 inline pros::Motor intakeA(8, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(9, pros::v5::MotorGears::green);
 inline pros::Motor mainMotorLift(10, pros::v5::MotorGears::green);
-inline pros::Motor mainArmMotor(12, pros::v5::MotorGears::green);
+inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);

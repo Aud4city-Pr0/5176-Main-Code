@@ -11,7 +11,7 @@ int positionState = 0;
 
 // helper constant variables
 //----------------------------
-const int MAX_STATE = 5;
+const int MAX_STATE = 4;
 
 // includes
 //-----------
