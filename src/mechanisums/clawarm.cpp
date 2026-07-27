@@ -23,15 +23,7 @@
 // this function will move the arm based on an int that ranges from 0-4.
 void ArmClass::arm::move_to_position(int position) {
     // getting angle from array index
-    angle_target = positionArray[position] 
-    //pros::screen::print(
-    //pros::E_TEXT_MEDIUM,
-    //0,
-    //"Index: %d Target: %d",
-    //position,
-    //angle_target
-    //);
-    // setting pid
+    angle_target = positionArray[position];
     ArmPID.target_set(angle_target);
 
 }
@@ -41,15 +33,6 @@ void ArmClass::arm::update_pid() {
     int current_angle = armMotor->get_position();
     // caculating ouput
     double output = ArmPID.compute(current_angle);
-    //pros::screen::print(pros::E_TEXT_MEDIUM, 0, "Angle: %d", current_angle);
-   //pros::screen::print(
-        //pros::E_TEXT_MEDIUM,
-        //3,
-        //"Angle: %d",
-        //current_angle
-
-    //);
-    //pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Output: %d", output);
     // moving arm motor
     armMotor->move(output);
 }
