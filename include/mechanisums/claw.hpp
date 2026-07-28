@@ -9,7 +9,6 @@
 // File includes
 //--------------
 #include "pros/motors.hpp"
-#include "pros/rotation.h"
 #include "EZ-Template/piston.hpp"
 #include "EZ-Template/PID.hpp"
 #include "pros/rotation.hpp"
@@ -17,7 +16,7 @@
 // the claw class
 namespace ClawClass {
     // constant namespace variables
-    const inline int armStateArray[3] = {100, 200, 300};
+    const inline int clawStateArray[3] = {100, 200, 300};
     enum GrabberState {
         CLOSE = 0,
         OPEN = 1
@@ -41,6 +40,8 @@ namespace ClawClass {
             clawRotationSensor = &ClawRotation;
             clawPisiton = &GrabberPisiton;
         };
+        // sets the claw postion from the claw state array
+        void set_claw_position(int postion);
         // inits the claw sensor and PID
         void initalize();
         // updates the claw PID
