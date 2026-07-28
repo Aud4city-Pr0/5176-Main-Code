@@ -75,7 +75,7 @@ void driver_control_arm() {
         }    
         // for debugging
         // pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
-        // calling the arm position function
     }
+    // calling the arm position function
     botClawArm.move_to_position(positionState);
 }
