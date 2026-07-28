@@ -267,6 +267,7 @@ void opcontrol() {
     driver_control_intake();
     driver_control_lift();
     driver_control_arm();
+    driver_controll_claw();
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

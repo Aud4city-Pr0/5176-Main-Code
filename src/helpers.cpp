@@ -59,6 +59,7 @@ void driver_control_lift() {
 void init_the_bot() {
     botLift.initalize();
     botClawArm.initalize();
+    botClaw.initalize();
 }
 
 void arm_task() {
