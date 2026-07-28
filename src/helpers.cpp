@@ -9,6 +9,7 @@
 //------------------
 int positionState = 0;
 int postionStateClaw = 0;
+bool graberActive = false;
 
 // helper constant variables
 //----------------------------
@@ -19,6 +20,7 @@ const int MAX_STATE_CLAW = 3;
 //-----------
 #include "mechanisums/intake.hpp"
 #include "mechanisums/lift.hpp"
+#include "mechanisums/claw.hpp"
 #include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
@@ -98,4 +100,12 @@ void driver_controll_claw() {
     }
     // clawing claw postion function
     botClaw.set_claw_position(postionStateClaw);
+
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && graberActive == false) {
+        botClaw.set_status(ClawClass::GrabberState::CLOSE);
+        graberActive = true;
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && graberActive == true) {
+        botClaw.set_status(ClawClass::GrabberState::OPEN);
+        graberActive = false;
+    }
 }

@@ -44,3 +44,12 @@ void ClawClass::claw::update_pid() {
     pros::screen::print(pros::E_TEXT_MEDIUM, 1, "Current speed %d", output_speed);
     clawFlipMotor->move(output_speed);
 }
+
+// sets status of the claw grabber
+void ClawClass::claw::set_status(ClawClass::GrabberState grabberState) {
+    if(grabberState == ClawClass::GrabberState::CLOSE) {
+        claw::clawPisiton->set(true);
+    } else if(grabberState == ClawClass::GrabberState::OPEN) {
+        claw::clawPisiton->set(false);
+    }
+}
