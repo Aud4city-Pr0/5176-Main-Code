@@ -8,10 +8,12 @@
 // helper variables
 //------------------
 int positionState = 0;
+int postionStateClaw = 0;
 
 // helper constant variables
 //----------------------------
 const int MAX_STATE = 4;
+const int MAX_STATE_CLAW = 3;
 
 // includes
 //-----------
@@ -65,6 +67,14 @@ void arm_task() {
         pros::delay(10);
     }
 }
+
+void claw_task() {
+    while(true) {
+        botClaw.update_pid();
+        pros::delay(10);
+    }
+}
+
 void driver_control_arm() {
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         // incrementing by one every time when button is pressed  
@@ -78,4 +88,19 @@ void driver_control_arm() {
     }
     // calling the arm position function
     botClawArm.move_to_position(positionState);
+}
+
+void driver_controll_claw() {
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+        // incrementing by 1
+        postionStateClaw++;
+        // preventing state from going out of array
+        if(postionStateClaw >= MAX_STATE_CLAW) {
+            postionStateClaw = 0;
+        }
+        // for debugging
+        // pros::screen::print(pros::E_TEXT_MEDIUM, 5, "Current position %d", positionStateClaw);
+    }
+    // clawing claw postion function
+    botClaw.set_claw_position(postionStateClaw);
 }
