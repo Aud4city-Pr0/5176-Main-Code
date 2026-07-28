@@ -40,6 +40,7 @@ void initialize() {
   //TODO: test code with removed task
 
   pros::Task armTask(arm_task);
+  pros::Task clawTask(claw_task);
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 
