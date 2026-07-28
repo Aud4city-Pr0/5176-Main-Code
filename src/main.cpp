@@ -39,8 +39,7 @@ void initialize() {
   init_the_bot();
   //TODO: test code with removed task
 
-  pros::Task armTask(arm_task);
-  pros::Task clawTask(claw_task);
+  pros::Task pidTask(pid_task);
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 

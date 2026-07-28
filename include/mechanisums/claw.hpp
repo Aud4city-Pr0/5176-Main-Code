@@ -16,7 +16,7 @@
 // the claw class
 namespace ClawClass {
     // constant namespace variables
-    const inline int clawStateArray[3] = {100, 200, 300};
+    const inline int clawStateArray[3] = {0, 850, 950};
     enum GrabberState {
         CLOSE = 0,
         OPEN = 1

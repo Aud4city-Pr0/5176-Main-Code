@@ -20,10 +20,7 @@ void driver_control_intake();
 void driver_control_lift();
 
 // arm task
-void arm_task();
-
-// claw task
-void claw_task();
+void pid_task();
 
 // contains the driver control code for the claw arm
 void driver_control_arm();

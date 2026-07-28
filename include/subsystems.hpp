@@ -23,7 +23,7 @@ inline pros::Motor intakeA(8, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(9, pros::v5::MotorGears::green);
 inline pros::Motor mainMotorLift(10, pros::v5::MotorGears::green);
 inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
-inline pros::Motor mainClawMotor(-14, pros::v5::MotorGears::green);
+inline pros::Motor mainClawMotor(14, pros::v5::MotorGears::green);
 
 // pnematics
 inline ez::Piston clawPisiton('a', false);

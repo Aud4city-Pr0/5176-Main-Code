@@ -37,9 +37,10 @@ void ClawClass::claw::set_claw_position(int position) {
 // updates the pid of the claw
 void ClawClass::claw::update_pid() {
     // getting current number of ticks
-    int current_ticks = clawRotationSensor->get_position();
+    int current_ticks = clawFlipMotor->get_position();
     pros::screen::print(pros::E_TEXT_MEDIUM, 0, "Current ticks %d", current_ticks);
     // computing ouput speed
     double output_speed = ClawPID.compute(current_ticks);
     pros::screen::print(pros::E_TEXT_MEDIUM, 1, "Current speed %d", output_speed);
+    clawFlipMotor->move(output_speed);
 }

@@ -62,15 +62,9 @@ void init_the_bot() {
     botClaw.initalize();
 }
 
-void arm_task() {
+void pid_task() {
     while (true) {
         botClawArm.update_pid();
-        pros::delay(10);
-    }
-}
-
-void claw_task() {
-    while(true) {
         botClaw.update_pid();
         pros::delay(10);
     }
@@ -94,7 +88,7 @@ void driver_control_arm() {
 void driver_controll_claw() {
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         // incrementing by 1
-        postionStateClaw++;
+        
         // preventing state from going out of array
         if(postionStateClaw >= MAX_STATE_CLAW) {
             postionStateClaw = 0;
