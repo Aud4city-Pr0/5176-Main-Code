@@ -68,6 +68,7 @@ void pid_task() {
     while (true) {
         botClawArm.update_pid();
         botClaw.update_pid();
+        botLift.update_pid();
         pros::delay(10);
     }
 }
