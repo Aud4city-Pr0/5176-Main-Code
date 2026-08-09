@@ -120,6 +120,7 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
+  botLift.enable_pid();
   chassis.pid_targets_reset();                // Resets PID targets to 0
   chassis.drive_imu_reset();                  // Reset gyro position to 0
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
@@ -248,6 +249,9 @@ void ez_template_extras() {
 void opcontrol() {
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+
+  // disabeling pid code for the lift to prevent movement conlifts
+  botLift.disable_pid();
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier

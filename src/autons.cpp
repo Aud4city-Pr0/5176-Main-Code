@@ -1,4 +1,6 @@
 #include "main.h"
+#include "pros/rtos.hpp"
+#include "subsystems.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -9,6 +11,13 @@
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
+
+
+// includes for the mechanisums
+#include "mechanisums/lift.hpp"
+#include "mechanisums/intake.hpp"
+#include "mechanisums/claw.hpp"
+#include "mechanisums/clawarm.hpp"
 
 ///
 // Constants
@@ -55,6 +64,10 @@ void default_constants() {
 // red side autos
 void left_side_auto() {
   // code here
+  // test code for lift
+  botLift.move_lift_with_pid(100);
+  pros::delay(350);
+  botLift.move_lift_with_pid(0);
 }
 
 void bottom_side_auto() {

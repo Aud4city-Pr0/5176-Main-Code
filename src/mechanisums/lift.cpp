@@ -38,7 +38,19 @@ void LiftClass::lift::move_lift_with_pid(int height) {
 
 }
 
+void LiftClass::lift::enable_pid() {
+    isUsingPID = true;
+}
+
+void LiftClass::lift::disable_pid() {
+    isUsingPID = false;
+}
+
 void LiftClass::lift::update_pid() {
+    // making sure that isUsingPid is enabled or disabled
+    if(!isUsingPID) {
+        return;
+    }
     // getting motor encoder position
     int motor_current_value = lift::liftMotor->get_position();
     // computing pid output speed

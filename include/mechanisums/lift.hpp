@@ -27,6 +27,7 @@ namespace LiftClass {
         int defaultSpeed = 0;
         int MAX_HEIGHT = 0;
         ez::PID CascadePID{0.25, 0, 0.08, 0, "Cascade"};
+        bool isUsingPID = false;
 
         // external variables or functions that can be used or changed by other classes or code in main.
         public:
@@ -45,5 +46,9 @@ namespace LiftClass {
         void move_lift_with_pid(int height);
         // updates lift pid
         void update_pid();
+        // enables pid controll
+        void enable_pid();
+        // disables pid controll
+        void disable_pid();
     };
 }
