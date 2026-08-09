@@ -30,7 +30,21 @@ void LiftClass::lift::move_lift_with_status(liftState state) {
 }
 
 void LiftClass::lift::move_lift_with_pid(int height) {
-    //TODO: implement pid and distance sensor code when distance sensor arrives.
+   // checking height prarameter against the lift's max height to see if it can be used as the pid target
+    if(height <= MAX_HEIGHT) {
+        // setting lift pid target
+        lift::CascadePID.target_set(height);
+    }
+
+}
+
+void LiftClass::lift::update_pid() {
+    // getting motor encoder position
+    int motor_current_value = lift::liftMotor->get_position();
+    // computing pid output speed
+    double output = lift::CascadePID.compute(motor_current_value);
+    // moving motor
+    lift::liftMotor->move(output);
 }
 
 void LiftClass::lift::initalize() {
