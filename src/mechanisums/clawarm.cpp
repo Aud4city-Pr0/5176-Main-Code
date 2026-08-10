@@ -45,3 +45,8 @@ void ArmClass::arm::initalize() {
     ArmPID.exit_condition_set(5, 10);
 }
 
+// this function checks the motor position to see if it is at or around the target position
+bool ArmClass::arm::is_at_target() {
+    return std::abs(armMotor->get_position() - angle_target) < 10;
+}
+

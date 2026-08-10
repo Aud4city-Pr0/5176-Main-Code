@@ -49,6 +49,6 @@ namespace LiftClass {
         // enables pid controll
         void enable_pid();
         // disables pid controll
-        void disable_pid();
+        void disable_pid(   );
     };
 }

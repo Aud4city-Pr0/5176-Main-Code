@@ -41,5 +41,7 @@ namespace ArmClass {
         void initalize();
         // updates pid
         void update_pid();
+        // checks to see if we have reached the tartget postion or are around it
+        bool is_at_target();
     };
 }

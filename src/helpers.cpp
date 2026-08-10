@@ -10,6 +10,7 @@
 int positionState = 0;
 int postionStateClaw = 0;
 bool graberActive = false;
+bool waitForArm = false;
 
 // helper constant variables
 //----------------------------
@@ -80,27 +81,42 @@ void driver_control_arm() {
         // preventing postionState from going outside of array index
         if (positionState >= MAX_STATE) {
             positionState = 0;
-        }    
-        // for debugging
-        // pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Current position %d", positionState);
+        }
+        
+        // incrementing claw state
+        postionStateClaw++;
+        // preventing postionStateClaw from going outside of array index
+        if (postionStateClaw >= MAX_STATE_CLAW) {
+            postionStateClaw = 0;
+        }
+        // calling the arm position function
+        botClawArm.move_to_position(positionState);
+
+        // setting waitForArm to true
+        waitForArm = true;
+
     }
-    // calling the arm position function
-    botClawArm.move_to_position(positionState);
+
+    // runing after arm movement has completed
+    if(waitForArm && botClawArm.is_at_target()) {
+        botClaw.set_claw_position(postionStateClaw);
+        waitForArm = false;
+    }
 }
 
 void driver_controll_claw() {
-    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+    // if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         // incrementing by 1
-        postionStateClaw++;
+        //postionStateClaw++;
         // preventing state from going out of array
-        if(postionStateClaw >= MAX_STATE_CLAW) {
-            postionStateClaw = 0;
-        }
+        //if(postionStateClaw >= MAX_STATE_CLAW) {
+            //postionStateClaw = 0;
+        //}
         // for debugging
-        // pros::screen::print(pros::E_TEXT_MEDIUM, 5, "Current position %d", positionStateClaw);
-    }
+        // pros::screen::print(pros::E_TEXT_MEDIUM, 5, "Current position %d", positionStateClaw) 
+    //} 
     // clawing claw postion function
-    botClaw.set_claw_position(postionStateClaw);
+    //botClaw.set_claw_position(postionStateClaw);
 
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && graberActive == false) {
         botClaw.set_status(ClawClass::GrabberState::CLOSE);
