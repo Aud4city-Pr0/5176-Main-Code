@@ -62,7 +62,7 @@ void LiftClass::lift::update_pid() {
 void LiftClass::lift::initalize() {
     // initalizes lift motor, pid and sensors
     lift::liftMotor->tare_position();
-    lift::CascadePID.exit_condition(5, 10);
+    lift::CascadePID.exit_condition_set(5, 10);
     // setting lift braking to hold so that we can keep our position
     lift::liftMotor->set_brake_mode(pros::MotorBrake::hold);
 }
