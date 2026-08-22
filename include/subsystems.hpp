@@ -15,12 +15,12 @@ extern Drive chassis;
 // Your motors, sensors, etc. should go here.  Below are examples
 
 // sensors
-inline pros::Rotation armRotationSensor(15);
-inline pros::Rotation clawRotationSensor(16);
+inline pros::Rotation armRotationSensor(2);
+inline pros::Rotation clawRotationSensor(3);
 
 // motors
-inline pros::Motor intakeA(18, pros::v5::MotorGears::green);
-inline pros::Motor intakeB(19, pros::v5::MotorGears::green);
+inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
+inline pros::Motor intakeB(15, pros::v5::MotorGears::green);
 inline pros::Motor mainMotorLift(11, pros::v5::MotorGears::green);
 inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
 inline pros::Motor mainClawMotor(13, pros::v5::MotorGears::green);
