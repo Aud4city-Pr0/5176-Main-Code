@@ -118,11 +118,13 @@ void driver_controll_claw() {
     // clawing claw postion function
     //botClaw.set_claw_position(postionStateClaw);
 
-    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && graberActive == false) {
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+        graberActive = !graberActive;
+    }
+
+    if(graberActive) {
         botClaw.set_status(ClawClass::GrabberState::CLOSE);
-        graberActive = true;
-    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && graberActive == true) {
+    } else {
         botClaw.set_status(ClawClass::GrabberState::OPEN);
-        graberActive = false;
     }
 }
