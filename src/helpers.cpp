@@ -118,7 +118,9 @@ void driver_controll_claw() {
     // clawing claw postion function
     //botClaw.set_claw_position(postionStateClaw);
 
+    // checks for a button press as soon as one happens
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+        // flips bool variable value to oppostite value (eg. true -> false and false -> true)
         graberActive = !graberActive;
     }
 
