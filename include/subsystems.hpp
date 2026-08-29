@@ -18,7 +18,7 @@ extern Drive chassis;
 // sensors
 inline pros::Rotation armRotationSensor(2);
 inline pros::Rotation clawRotationSensor(3);
-inline pros::adi::DigitalIn liftBumber('a');
+inline pros::adi::DigitalIn liftBumper('a');
 
 // motors
 inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
