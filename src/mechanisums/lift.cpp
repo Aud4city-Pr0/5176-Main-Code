@@ -64,5 +64,5 @@ void LiftClass::lift::initalize() {
     lift::liftMotor->tare_position();
     lift::CascadePID.exit_condition_set(5, 10);
     // setting lift braking to hold so that we can keep our position
-    lift::liftMotor->set_brake_mode(pros::MotorBrake::hold);
+    lift::liftMotor->set_brake_mode(pros::MotorBrake::coast);
 }
