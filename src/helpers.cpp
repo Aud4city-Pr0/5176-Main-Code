@@ -52,10 +52,17 @@ void driver_control_intake() {
 void driver_control_lift() {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         botLift.move_lift_with_status(LiftClass::liftState::RAISE);
-    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        // bumper switch acts as an autostop
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && !liftBumber.get_value()) {
         botLift.move_lift_with_status(LiftClass::liftState::LOWER);
     } else {
         botLift.move_lift_with_status(LiftClass::liftState::STOP);
+    }
+
+    if(liftBumber.get_value() == 0) {
+        botLift.liftMotor->set_brake_mode(pros::MotorBrake::coast);
+    } else {
+        botLift.liftMotor->set_brake_mode(pros::MotorBrake::hold);
     }
 }
 

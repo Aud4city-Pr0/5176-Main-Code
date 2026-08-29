@@ -4,6 +4,7 @@
 #include "EZ-Template/piston.hpp"
 #include "api.h"
 #include "pros/abstract_motor.hpp"
+#include "pros/adi.hpp"
 #include "pros/rotation.hpp"
 #include "pros/motors.hpp"
 #include "mechanisums/intake.hpp"
@@ -17,6 +18,7 @@ extern Drive chassis;
 // sensors
 inline pros::Rotation armRotationSensor(2);
 inline pros::Rotation clawRotationSensor(3);
+inline pros::adi::DigitalIn liftBumber('a');
 
 // motors
 inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
