@@ -16,7 +16,7 @@
 // the claw class
 namespace ClawClass {
     // constant namespace variables
-    const inline int clawStateArray[3] = {0, 850, 950};
+    const inline int clawStateArray[6] = {50, -1100, -900, -300, 250, -150};
     enum GrabberState {
         CLOSE = 0,
         OPEN = 1
@@ -29,7 +29,7 @@ namespace ClawClass {
         pros::Motor* clawFlipMotor;
         pros::Rotation* clawRotationSensor;
         ez::Piston* clawPisiton;
-        ez::PID ClawPID{0.25, 0, 0.08, 0, "Claw"};
+        ez::PID ClawPID{0.35, 0, 0.08, 0, "Claw"};
 
 
         public:
@@ -48,5 +48,7 @@ namespace ClawClass {
         void update_pid();
         // controlls opening and closing of claw
         void set_status(GrabberState grabberStatus);
+        // checks to see if claw is at target
+        bool is_at_target();
     };
 }

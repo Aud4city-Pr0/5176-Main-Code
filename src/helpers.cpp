@@ -11,6 +11,7 @@ int positionState = 0;
 int postionStateClaw = 0;
 bool graberActive = false;
 bool waitForArm = false;
+bool waitForClaw = false;
 
 // helper constant variables
 //----------------------------
@@ -83,32 +84,67 @@ void pid_task() {
 }
 
 void driver_control_arm() {
-    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-        // incrementing by one every time when button is pressed  
-        positionState++;
-        // preventing postionState from going outside of array index
-        if (positionState >= MAX_STATE) {
-            positionState = 0;
-        }
-        
-        // incrementing claw state
-        postionStateClaw++;
-        // preventing postionStateClaw from going outside of array index
-        if (postionStateClaw >= MAX_STATE_CLAW) {
-            postionStateClaw = 0;
-        }
-        // calling the arm position function
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        // setting arm and claw to position zero
+        positionState = 0;
+        postionStateClaw = 0;
+        botClaw.set_claw_position(postionStateClaw);
+
+        // setting waitForArm to true
+        waitForClaw = true;
+
+    } else if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        // setting arm and claw to position zero
+        positionState = 1;
+        postionStateClaw = 1;
         botClawArm.move_to_position(positionState);
 
         // setting waitForArm to true
         waitForArm = true;
+    } else if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+        // setting arm and claw to position zero
+        positionState = 2;
+        postionStateClaw = 2;
+        botClawArm.move_to_position(positionState);
 
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        // setting arm and claw to position zero
+        positionState = 3;
+        postionStateClaw = 3;
+        botClawArm.move_to_position(positionState);
+
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        // setting arm and claw to position zero
+        positionState = 4;
+        postionStateClaw = 4;
+        botClawArm.move_to_position(positionState);
+
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+       // setting arm and claw to position zero
+        positionState = 5;
+        postionStateClaw = 5;
+        botClawArm.move_to_position(positionState);
+
+        // setting waitForArm to true
+        waitForArm = true;  
     }
 
     // runing after arm movement has completed
     if(waitForArm && botClawArm.is_at_target()) {
         botClaw.set_claw_position(postionStateClaw);
         waitForArm = false;
+    }
+
+    // runing after claw movemnet has finished
+    if(waitForClaw && botClaw.is_at_target()) {
+        botClawArm.move_to_position(positionState);
+        waitForClaw = false;
     }
 }
 

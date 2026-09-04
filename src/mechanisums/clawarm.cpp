@@ -31,6 +31,7 @@ void ArmClass::arm::move_to_position(int position) {
 void ArmClass::arm::update_pid() {
     // getting angle
     int current_angle = armMotor->get_position();
+    //pros::screen::print(pros::E_TEXT_MEDIUM, 1, "Current ticks arm: %d", current_angle);
     // caculating ouput
     double output = ArmPID.compute(current_angle);
     // moving arm motor
@@ -47,6 +48,6 @@ void ArmClass::arm::initalize() {
 
 // this function checks the motor position to see if it is at or around the target position
 bool ArmClass::arm::is_at_target() {
-    return std::abs(armMotor->get_position() - angle_target) < 10;
+    return std::abs(armMotor->get_position() - angle_target) < 50;
 }
 
