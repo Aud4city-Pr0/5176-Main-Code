@@ -16,6 +16,16 @@
 // the claw class
 namespace ClawClass {
     // constant namespace variables
+
+    // this is the clawSateArray, each of its indexes (0 - 5) coresponds to one of its 6 states that it can be in.
+    // For example, index 1 of the array corespondes to state 2 (index 1 -> state 2).
+    // Here is a list of all of the coresponding indexes and the states/positions that they are assigned to
+    // index 0 -> state 1
+    // index 1 -> state 2
+    // index 2 -> state 3
+    // index 3 -> state 4
+    // index 4 -> state 5
+    // index 5 -> state 6
     const inline int clawStateArray[6] = {50, -1100, -900, -300, 250, -150};
     enum GrabberState {
         CLOSE = 0,
@@ -29,7 +39,7 @@ namespace ClawClass {
         pros::Motor* clawFlipMotor;
         pros::Rotation* clawRotationSensor;
         ez::Piston* clawPisiton;
-        ez::PID ClawPID{0.35, 0, 0.08, 0, "Claw"};
+        ez::PID ClawPID{0.55, 0, 0.08, 0, "Claw"};
 
 
         public:
