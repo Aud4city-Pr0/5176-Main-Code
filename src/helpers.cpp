@@ -13,11 +13,6 @@ bool graberActive = false;
 bool waitForArm = false;
 bool waitForClaw = false;
 
-// helper constant variables
-//----------------------------
-const int MAX_STATE = 4;
-const int MAX_STATE_CLAW = 3;
-
 // includes
 //-----------
 #include "mechanisums/intake.hpp"
