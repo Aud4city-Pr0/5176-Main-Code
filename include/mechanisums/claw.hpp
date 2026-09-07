@@ -39,7 +39,7 @@ namespace ClawClass {
         pros::Motor* clawFlipMotor;
         pros::Rotation* clawRotationSensor;
         ez::Piston* clawPisiton;
-        ez::PID ClawPID{0.55, 0, 0.08, 0, "Claw"};
+        ez::PID ClawPID{0.8, 0, 0.08, 0, "Claw"};
 
 
         public:
