@@ -13,6 +13,16 @@ bool graberActive = false;
 bool waitForArm = false;
 bool waitForClaw = false;
 
+enum ScoreState {
+    DEFAULT = 0,
+    MATCHLOAD = 1,
+    MATCHLOAD_MED = 2,
+    MATCHLOAD_HIGH = 3,
+    SCORE = 4,
+    SCORE_HIGH = 5
+};
+
+
 // includes
 //-----------
 #include "mechanisums/intake.hpp"
@@ -43,6 +53,74 @@ void driver_control_intake() {
     } else {
         botIntake.set_status(false);
     }
+}
+
+void set_scoring_to(ScoreState score) {
+    switch(score) {
+        case DEFAULT:
+            // setting arm and claw to position zero
+            positionState = 0;
+            postionStateClaw = 0;
+            botClaw.set_claw_position(postionStateClaw);
+
+            // setting waitForArm to true
+            waitForClaw = true;
+        case MATCHLOAD:
+            // setting arm and claw to position zero
+            positionState = 1;
+            postionStateClaw = 1;
+            botClawArm.move_to_position(positionState);
+
+            // setting waitForArm to true
+            waitForArm = true;
+        case MATCHLOAD_MED: 
+            // setting arm and claw to position zero
+            positionState = 2;
+            postionStateClaw = 2;
+            botClawArm.move_to_position(positionState);
+
+            // setting waitForArm to true
+            waitForArm = true;
+        case MATCHLOAD_HIGH:
+            // setting arm and claw to position zero
+            positionState = 3;
+            postionStateClaw = 3;
+            botClawArm.move_to_position(positionState);
+
+            // setting waitForArm to true
+            waitForArm = true;
+        case SCORE:
+            // setting arm and claw to position zero
+            positionState = 4;
+            postionStateClaw = 4;
+            botClawArm.move_to_position(positionState);
+
+            // setting waitForArm to true
+            waitForArm = true;
+        case SCORE_HIGH:
+            // setting arm and claw to position zero
+            positionState = 5;
+            postionStateClaw = 5;
+            botClawArm.move_to_position(positionState);
+
+            // setting waitForArm to true
+            waitForArm = true;
+        default:
+            break;
+    };
+
+    // runing after arm movement has completed
+    if(waitForArm && botClawArm.is_at_target()) {
+        botClaw.set_claw_position(postionStateClaw);
+        waitForArm = false;
+    }
+
+    // runing after claw movemnet has finished
+    if(waitForClaw && botClaw.is_at_target()) {
+        botClawArm.move_to_position(positionState);
+        waitForClaw = false;
+    }
+
 }
 
 void driver_control_lift() {

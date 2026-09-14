@@ -26,7 +26,7 @@ namespace ArmClass {
     // index 3 -> state 4
     // index 4 -> state 5
     // index 5 -> state 6
-    const inline int positionArray[6] = {0, 420, 785, 1900, 1400, 850};
+    const inline int positionArray[6] = {0, 410, 785, 1900, 1400, 850};
 
     // The arm class
     class arm {
@@ -34,7 +34,7 @@ namespace ArmClass {
         private:
         pros::Motor* armMotor;
         pros::Rotation* armRotation;
-        ez::PID ArmPID{0.8, 0, 0.08, 0, "Arm"};
+        ez::PID ArmPID{0.35, 0, 1.3, 0, "Arm"};
         int angle_target = 0;
 
         // conatains vars and functions that can be acessed publicly by class members or other .cpp file
