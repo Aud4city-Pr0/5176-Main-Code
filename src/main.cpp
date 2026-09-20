@@ -67,7 +67,7 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
      // the auton functions (RED)
-     {"Left Side Auto\n\n[Insert description here]", left_side_auto},
+     {"Left Side Auto\n\n scores a three pin/30 point stack on the left side red goal.", left_side_auto},
      {"Left Side Auto Alt\n\n[Insert description here]", left_side_alt_auto},
      {"Bottom Side Auto\n\n[Insert description here]", bottom_side_auto},
      {"Bottom Side Auto Alt\n\n[Insert description here]", bottom_side_alt_auto},

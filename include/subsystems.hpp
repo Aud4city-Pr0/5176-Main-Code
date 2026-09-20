@@ -32,6 +32,6 @@ inline ez::Piston clawPisiton('h', false);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);
-inline LiftClass::lift botLift(mainMotorLift, 12000, 1270);
+inline LiftClass::lift botLift(mainMotorLift, 12000, 1200000000);
 inline ArmClass::arm botClawArm(mainArmMotor, armRotationSensor);
 inline ClawClass::claw botClaw(mainClawMotor, clawRotationSensor, clawPisiton);

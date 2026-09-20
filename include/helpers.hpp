@@ -7,6 +7,19 @@
 // Description: Contains some helper functions for the robot
 //-----------------------------------------
 
+// scoring state enum
+enum ScoreState {
+    DEFAULT = 0,
+    MATCHLOAD = 1,
+    MATCHLOAD_MED = 2,
+    MATCHLOAD_HIGH = 3,
+    SCORE = 4,
+    SCORE_HIGH = 5
+};
+
+extern bool waitForArm;
+extern bool waitForClaw;
+
 // init function for sensors and motors
 void init_the_bot();
 
@@ -27,3 +40,6 @@ void driver_control_arm();
 
 // contains 
 void driver_controll_claw();
+
+// method for moving arm and claw in auto via one line of code
+void set_scoring_to(ScoreState score);

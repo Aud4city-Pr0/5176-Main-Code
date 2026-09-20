@@ -18,7 +18,7 @@ const int SWING_SPEED = 110;
 #include "mechanisums/intake.hpp"
 #include "mechanisums/claw.hpp"
 #include "mechanisums/clawarm.hpp"
-
+#include "helpers.hpp"
 ///
 // Constants
 ///
@@ -63,11 +63,41 @@ void default_constants() {
 // Competion autos
 // red side autos
 void left_side_auto() {
-  // code here
-  // test code for lift
-  botLift.move_lift_with_pid(100);
-  pros::delay(350);
-  botLift.move_lift_with_pid(0);
+  // enabling lift pid
+  botLift.enable_pid();
+  botIntake.set_intake_direction(IntakeClass::Direction::BACKAWRD);
+  botIntake.set_status(true);
+  // clamp down on preloaded pin
+  pros::delay(950);
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  // truning to properly align to toggle
+  chassis.pid_turn_set(30_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // backup by a few inches before driving into toggle
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  // chaning the toggle
+  chassis.pid_drive_set(13_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(13_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  // after roller is changed, drive the robot to the red podium
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(110_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // moving claw and arm
+  set_scoring_to(SCORE);
+  pros::delay(950);
+  // driving to score
+  chassis.pid_drive_set(-20.6_in, 85);
+  chassis.pid_wait();
+  botClaw.set_status(ClawClass::GrabberState::OPEN);
+  // resetting claw and arm and lift
+  set_scoring_to(DEFAULT);
+
 }
 
 void bottom_side_auto() {

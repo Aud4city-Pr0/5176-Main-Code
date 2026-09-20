@@ -10,17 +10,8 @@
 int positionState = 0;
 int postionStateClaw = 0;
 bool graberActive = false;
-bool waitForArm = false;
 bool waitForClaw = false;
-
-enum ScoreState {
-    DEFAULT = 0,
-    MATCHLOAD = 1,
-    MATCHLOAD_MED = 2,
-    MATCHLOAD_HIGH = 3,
-    SCORE = 4,
-    SCORE_HIGH = 5
-};
+bool waitForArm  = false;
 
 
 // includes
@@ -56,58 +47,51 @@ void driver_control_intake() {
 }
 
 void set_scoring_to(ScoreState score) {
-    switch(score) {
-        case DEFAULT:
-            // setting arm and claw to position zero
-            positionState = 0;
-            postionStateClaw = 0;
-            botClaw.set_claw_position(postionStateClaw);
 
-            // setting waitForArm to true
-            waitForClaw = true;
-        case MATCHLOAD:
-            // setting arm and claw to position zero
-            positionState = 1;
-            postionStateClaw = 1;
-            botClawArm.move_to_position(positionState);
+    if(score == ScoreState::DEFAULT) {
+        // setting arm and claw to position zero
+        positionState = 0;
+        postionStateClaw = 0;
+        botClaw.set_claw_position(postionStateClaw);
 
-            // setting waitForArm to true
-            waitForArm = true;
-        case MATCHLOAD_MED: 
-            // setting arm and claw to position zero
-            positionState = 2;
-            postionStateClaw = 2;
-            botClawArm.move_to_position(positionState);
-
-            // setting waitForArm to true
-            waitForArm = true;
-        case MATCHLOAD_HIGH:
-            // setting arm and claw to position zero
-            positionState = 3;
-            postionStateClaw = 3;
-            botClawArm.move_to_position(positionState);
-
-            // setting waitForArm to true
-            waitForArm = true;
-        case SCORE:
-            // setting arm and claw to position zero
-            positionState = 4;
-            postionStateClaw = 4;
-            botClawArm.move_to_position(positionState);
-
-            // setting waitForArm to true
-            waitForArm = true;
-        case SCORE_HIGH:
-            // setting arm and claw to position zero
-            positionState = 5;
-            postionStateClaw = 5;
-            botClawArm.move_to_position(positionState);
-
-            // setting waitForArm to true
-            waitForArm = true;
-        default:
-            break;
-    };
+        // setting waitForArm to true
+        waitForClaw = true;
+    } else if(score == ScoreState::MATCHLOAD) {
+       // setting arm and claw to position zero
+        positionState = 1;
+        postionStateClaw = 1;
+        botClawArm.move_to_position(positionState);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::MATCHLOAD_MED) {
+        // setting arm and claw to position zero
+        positionState = 2;
+        postionStateClaw = 2;
+        botClawArm.move_to_position(positionState);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::MATCHLOAD_HIGH) {
+        // setting arm and claw to position zero
+        positionState = 3;
+        postionStateClaw = 3;
+        botClawArm.move_to_position(positionState);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::SCORE) {
+        // setting arm and claw to position zero
+        positionState = 4;
+        postionStateClaw = 4;
+        botClawArm.move_to_position(positionState);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::SCORE_HIGH) {
+        // setting arm and claw to position zero
+        positionState = 5;
+        postionStateClaw = 5;
+        botClawArm.move_to_position(positionState);
+        // setting waitForArm to true
+        waitForArm = true;
+    }
 
     // runing after arm movement has completed
     if(waitForArm && botClawArm.is_at_target()) {
