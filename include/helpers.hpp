@@ -38,8 +38,5 @@ void pid_task();
 // contains the driver control code for the claw arm
 void driver_control_arm();
 
-// contains 
-void driver_controll_claw();
-
 // method for moving arm and claw in auto via one line of code
 void set_scoring_to(ScoreState score);

@@ -93,17 +93,7 @@ void set_scoring_to(ScoreState score) {
         waitForArm = true;
     }
 
-    // runing after arm movement has completed
-    if(waitForArm && botClawArm.is_at_target()) {
-        botClaw.set_claw_position(postionStateClaw);
-        waitForArm = false;
-    }
-
-    // runing after claw movemnet has finished
-    if(waitForClaw && botClaw.is_at_target()) {
-        botClawArm.move_to_position(positionState);
-        waitForClaw = false;
-    }
+    
 
 }
 
@@ -136,6 +126,19 @@ void pid_task() {
         botClawArm.update_pid();
         botClaw.update_pid();
         botLift.update_pid();
+
+        // runing after arm movement has completed and after all pids are updated
+        if(waitForArm && botClawArm.is_at_target()) {
+            botClaw.set_claw_position(postionStateClaw);
+            waitForArm = false;
+        }
+
+        // runing after claw movemnet has finished and after all pids are updated
+        if(waitForClaw && botClaw.is_at_target()) {
+            botClawArm.move_to_position(positionState);
+            waitForClaw = false;
+        }
+
         pros::delay(10);
     }
 }
@@ -190,32 +193,5 @@ void driver_control_arm() {
 
         // setting waitForArm to true
         waitForArm = true;  
-    }
-
-    // runing after arm movement has completed
-    if(waitForArm && botClawArm.is_at_target()) {
-        botClaw.set_claw_position(postionStateClaw);
-        waitForArm = false;
-    }
-
-    // runing after claw movemnet has finished
-    if(waitForClaw && botClaw.is_at_target()) {
-        botClawArm.move_to_position(positionState);
-        waitForClaw = false;
-    }
-}
-
-void driver_controll_claw() {
-
-    // checks for a button press as soon as one happens
-    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
-        // flips bool variable value to oppostite value (eg. true -> false and false -> true)
-        graberActive = !graberActive;
-    }
-
-    if(graberActive) {
-        botClaw.set_status(ClawClass::GrabberState::CLOSE);
-    } else {
-        botClaw.set_status(ClawClass::GrabberState::OPEN);
     }
 }

@@ -65,38 +65,51 @@ void default_constants() {
 void left_side_auto() {
   // enabling lift pid
   botLift.enable_pid();
-  botIntake.set_intake_direction(IntakeClass::Direction::BACKAWRD);
-  botIntake.set_status(true);
   // clamp down on preloaded pin
   pros::delay(950);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  botIntake.set_intake_direction(IntakeClass::Direction::BACKAWRD);
+  botIntake.set_status(true);
   // truning to properly align to toggle
   chassis.pid_turn_set(30_deg, TURN_SPEED);
   chassis.pid_wait();
-  // backup by a few inches before driving into toggle
+  // moving a few inches back to setup for toggle
   chassis.pid_drive_set(-4_in, DRIVE_SPEED);
   chassis.pid_wait();
   // chaning the toggle
-  chassis.pid_drive_set(13_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-5.5_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(13_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   // after roller is changed, drive the robot to the red podium
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-5_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(110_deg, TURN_SPEED);
   chassis.pid_wait();
   // moving claw and arm
   set_scoring_to(SCORE);
-  pros::delay(950);
+  pros::delay(1000);
   // driving to score
-  chassis.pid_drive_set(-20.6_in, 85);
+  chassis.pid_drive_set(-21_in, 85);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
-  // resetting claw and arm and lift
-  set_scoring_to(DEFAULT);
+  botIntake.set_status(false);
+  // driving to get first angled pin
+  botLift.move_lift_with_pid(7000);
+  pros::delay(350);
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(70_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-25_in, 85);
+  chassis.pid_wait();
+  botLift.move_lift_with_pid(0);
+  pros::delay(950);
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  pros::delay(350);
+  botLift.move_lift_with_pid(6000);
 
 }
 

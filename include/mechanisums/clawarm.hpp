@@ -26,7 +26,7 @@ namespace ArmClass {
     // index 3 -> state 4
     // index 4 -> state 5
     // index 5 -> state 6
-    const inline int positionArray[6] = {0, 270, 785, 1900, 350, 850};
+    const inline int positionArray[6] = {0, 270, 785, 1900, 490, 850};
 
     // The arm class
     class arm {

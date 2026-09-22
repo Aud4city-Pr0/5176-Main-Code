@@ -1,6 +1,8 @@
 #include "main.h"
+#include "EZ-Template/util.hpp"
 #include "autons.hpp"
 #include "helpers.hpp"
+#include "pros/misc.h"
 #include "subsystems.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -270,7 +272,7 @@ void opcontrol() {
     driver_control_intake();
     driver_control_lift();
     driver_control_arm();
-    driver_controll_claw();
+    clawPisiton.button_toggle(master.get_digital(DIGITAL_A));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
