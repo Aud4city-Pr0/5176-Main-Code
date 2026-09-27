@@ -65,61 +65,56 @@ void default_constants() {
 void left_side_auto() {
   // enabling lift pid
   botLift.enable_pid();
-  // clamp down on preloaded pin
-  pros::delay(950);
-  botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  botIntake.set_intake_direction(IntakeClass::Direction::BACKAWRD);
-  botIntake.set_status(true);
-  // truning to properly align to toggle
-  chassis.pid_turn_set(30_deg, TURN_SPEED);
+  // driving out before turn
+  chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
+  //chassis.pid_turn_set(30_deg, TURN_SPEED);
+  //chassis.pid_wait();
   // moving a few inches back to setup for toggle
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  //chassis.pid_wait();
   // chaning the toggle
-  chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-5.5_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  // after roller is changed, drive the robot to the red podium
-  chassis.pid_drive_set(-5_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_turn_set(110_deg, TURN_SPEED);
+  //chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_drive_set(-5.5_in, DRIVE_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
+  //chassis.pid_wait();
+  // drive the robot to the red podium
+  //chassis.pid_drive_set(-7_in, DRIVE_SPEED);
+  //chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
   // moving claw and arm
   set_scoring_to(SCORE);
   pros::delay(1000);
   // driving to score
-  chassis.pid_drive_set(-23_in, 85);
+  chassis.pid_drive_set(-15_in, 85);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   botIntake.set_status(false);
   // driving to get first angled pin
-  botLift.move_lift_with_pid(2000);
-  pros::delay(990);
-  chassis.pid_drive_set(9.5_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_turn_set(67_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-26_in, 40);
-  chassis.pid_wait();
-  botLift.move_lift_with_pid(0);
-  pros::delay(1300);
-  botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  pros::delay(350);
-  botLift.move_lift_with_pid(6000);
-  chassis.pid_drive_set(22_in, 85);
-  chassis.pid_wait();
-  chassis.pid_turn_set(125_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-5_in, 40);
-  chassis.pid_wait();
+  //botLift.move_lift_with_pid(2000);
+  //pros::delay(990);
+  //chassis.pid_drive_set(9.5_in, DRIVE_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_turn_set(-67_deg, TURN_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_drive_set(-26_in, 40);
+  //chassis.pid_wait();
+  //botLift.move_lift_with_pid(0);
+  //pros::delay(1300);
+  //botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  //pros::delay(350);
+  //botLift.move_lift_with_pid(6000);
+  //chassis.pid_drive_set(22_in, 85);
+  //chassis.pid_wait();
+  //chassis.pid_turn_set(125_deg, TURN_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_drive_set(-6_in, 40);
+  //chassis.pid_wait();
   // scoring the cup and pin
-  botLift.move_lift_with_pid(0);
-  pros::delay(1300);
-  botClaw.set_status(ClawClass::GrabberState::OPEN);
+  //botClaw.set_status(ClawClass::GrabberState::OPEN);
 
 }
 
