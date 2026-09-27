@@ -96,20 +96,23 @@ void left_side_auto() {
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   botIntake.set_status(false);
+  set_scoring_to(MATCHLOAD);
   // driving to get first angled pin
-  botLift.move_lift_with_pid(7000);
+  botLift.move_lift_with_pid(2000);
   pros::delay(350);
-  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_drive_set(9.5_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(70_deg, TURN_SPEED);
+  chassis.pid_turn_set(75_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-25_in, 85);
+  chassis.pid_drive_set(-27_in, 60);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(950);
+  pros::delay(1300);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   pros::delay(350);
-  botLift.move_lift_with_pid(6000);
+  botLift.move_lift_with_pid(4000);
+  chassis.pid_drive_set(15_in, 85);
+  chassis.pid_wait();
 
 }
 
