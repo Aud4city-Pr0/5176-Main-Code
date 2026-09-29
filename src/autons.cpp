@@ -113,6 +113,7 @@ void left_side_auto() {
   chassis.pid_wait();
   chassis.pid_drive_set(-10_in, 40);
   chassis.pid_wait();
+  pros::delay(1000);
   // scoring the cup and pin
   botClaw.set_status(ClawClass::GrabberState::OPEN);
 
