@@ -72,7 +72,7 @@ void left_side_auto() {
   chassis.pid_wait();
   // moving claw and arm
   set_scoring_to(SCORE);
-  pros::delay(1400);
+  pros::delay(1000);
   // driving to score
   chassis.pid_drive_set(-17.8_in, 85);
   chassis.pid_wait();
@@ -85,13 +85,12 @@ void left_side_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(213_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-21.5_in, 48);
+  chassis.pid_drive_set(-21.7_in, 48);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(1500);
+  pros::delay(1300);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  pros::delay(350);
-  botLift.move_lift_with_pid(4500);
+  botLift.move_lift_with_pid(4900);
   chassis.pid_drive_set(23_in, 75);
   chassis.pid_wait();
   chassis.pid_turn_set(-88_deg, TURN_SPEED);
@@ -101,10 +100,9 @@ void left_side_auto() {
   pros::delay(1000);
   // scoring the cup and pin
   botClaw.set_status(ClawClass::GrabberState::OPEN);
-  pros::delay(100);
   // driving back to roller
   botLift.move_lift_with_pid(0);
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(180_deg, TURN_SPEED);
   chassis.pid_wait();
@@ -113,7 +111,7 @@ void left_side_auto() {
   chassis.pid_wait();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(13_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait();
