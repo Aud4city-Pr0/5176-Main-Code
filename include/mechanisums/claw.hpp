@@ -26,7 +26,7 @@ namespace ClawClass {
     // index 3 -> state 4
     // index 4 -> state 5
     // index 5 -> state 6
-    const inline int clawStateArray[6] = {75, -300, -900, -300, -180, 300};
+    const inline int clawStateArray[6] = {75, -1170, -900, -300, -180, 300};
     enum GrabberState {
         CLOSE = 0,
         OPEN = 1

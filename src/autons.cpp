@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/device.hpp"
 #include "pros/rtos.hpp"
 #include "subsystems.hpp"
 
@@ -156,5 +157,24 @@ void top_side_alt_auto() {
 
 // skills 
 void skills_auto() {
-  // code here
+  // diriving to red podium
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  set_scoring_to(SCORE);
+  chassis.pid_drive_set(-3.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-55_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-8.2_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  botClaw.set_status(ClawClass::GrabberState::OPEN);
+  pros::delay(400);
+  botLift.move_lift_with_pid(3300);
+  // getting a pin and cup to the left
+  set_scoring_to(SCORE, 450);
+  chassis.pid_drive_set(9.75_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(40_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-7_in, DRIVE_SPEED);
+  chassis.pid_wait();
 }
