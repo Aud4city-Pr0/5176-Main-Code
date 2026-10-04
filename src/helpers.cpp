@@ -97,6 +97,52 @@ void set_scoring_to(ScoreState score) {
 
 }
 
+void set_scoring_to(ScoreState score, int customPosition) {
+
+    if(score == ScoreState::DEFAULT) {
+        // setting arm and claw to position zero
+        positionState = 0;
+        postionStateClaw = 0;
+        botClaw.set_claw_position(postionStateClaw);
+
+        // setting waitForArm to true
+        waitForClaw = true;
+    } else if(score == ScoreState::MATCHLOAD) {
+       // setting arm and claw to position zero
+        postionStateClaw = 1;
+        botClawArm.move_to_custom_position(customPosition);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::MATCHLOAD_MED) {
+        // setting arm and claw to position zero
+        postionStateClaw = 2;
+        botClawArm.move_to_custom_position(customPosition);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::MATCHLOAD_HIGH) {
+        // setting arm and claw to position zero
+        postionStateClaw = 3;
+        botClawArm.move_to_custom_position(customPosition);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::SCORE) {
+        // setting arm and claw to position zero
+        postionStateClaw = 4;
+        botClawArm.move_to_custom_position(customPosition);
+        // setting waitForArm to true
+        waitForArm = true;
+    } else if(score == ScoreState::SCORE_HIGH) {
+        // setting arm and claw to position zero
+        postionStateClaw = 5;
+        botClawArm.move_to_custom_position(customPosition);
+        // setting waitForArm to true
+        waitForArm = true;
+    }
+
+    
+
+}
+
 void driver_control_lift() {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         botLift.move_lift_with_status(LiftClass::liftState::RAISE);

@@ -47,6 +47,8 @@ namespace ArmClass {
 
         // this function will move the arm based on an int that ranges from 0-4.
         void move_to_position(int position);
+        // sets the pid target to a custom value
+        void move_to_custom_position(int customPositionValue);
         // initalizer function that sets up motor and sensor
         void initalize();
         // updates pid

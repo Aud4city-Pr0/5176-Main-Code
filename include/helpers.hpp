@@ -40,3 +40,5 @@ void driver_control_arm();
 
 // method for moving arm and claw in auto via one line of code
 void set_scoring_to(ScoreState score);
+// set the scoring of the claw but override the arm postion
+void set_scoring_to(ScoreState score, int customPosition);

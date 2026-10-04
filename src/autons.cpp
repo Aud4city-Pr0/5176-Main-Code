@@ -72,17 +72,18 @@ void left_side_auto() {
   chassis.pid_wait();
   // moving claw and arm
   set_scoring_to(SCORE);
-  pros::delay(1000);
+  pros::delay(500);
   // driving to score
   chassis.pid_drive_set(-17.8_in, 85);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   botIntake.set_status(false);
   // driving to get first angled pin
-  botLift.move_lift_with_pid(2000);
+  botLift.move_lift_with_pid(3300);
   pros::delay(990);
   chassis.pid_drive_set(9.5_in, DRIVE_SPEED);
   chassis.pid_wait();
+  set_scoring_to(SCORE, 425);
   chassis.pid_turn_set(213_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-21.7_in, 48);
@@ -90,14 +91,14 @@ void left_side_auto() {
   botLift.move_lift_with_pid(0);
   pros::delay(1300);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  botLift.move_lift_with_pid(4900);
+  botLift.move_lift_with_pid(5400);
   chassis.pid_drive_set(23_in, 75);
   chassis.pid_wait();
   chassis.pid_turn_set(-88_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-10_in, 40);
   chassis.pid_wait();
-  pros::delay(1000);
+  pros::delay(700);
   // scoring the cup and pin
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   // driving back to roller
@@ -108,13 +109,13 @@ void left_side_auto() {
   chassis.pid_wait();
   // roller time (gambling I LOVE GAMMBLING LETS GOO GAMBLING)
   chassis.pid_drive_set(28_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_wait_quick();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_wait_quick();
   chassis.pid_drive_set(20_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_wait_quick();
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_wait_quick();
   set_scoring_to(DEFAULT);
 
 }

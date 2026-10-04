@@ -28,6 +28,10 @@ void ArmClass::arm::move_to_position(int position) {
 
 }
 
+void ArmClass::arm::move_to_custom_position(int customPositionValue) {
+    ArmPID.target_set(customPositionValue);
+}
+
 void ArmClass::arm::update_pid() {
     // getting angle
     int current_angle = armMotor->get_position();
