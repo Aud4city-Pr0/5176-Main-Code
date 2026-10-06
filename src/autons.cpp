@@ -119,6 +119,7 @@ void left_side_auto() {
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   set_scoring_to(DEFAULT);
+  botLift.disable_pid();
 
 }
 
@@ -168,13 +169,55 @@ void skills_auto() {
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   pros::delay(400);
-  botLift.move_lift_with_pid(3300);
+  botLift.move_lift_with_pid(3100);
   // getting a pin and cup to the left
   set_scoring_to(SCORE, 450);
   chassis.pid_drive_set(9.75_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(40_deg, TURN_SPEED);
+  chassis.pid_turn_set(42_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait();
+  botLift.move_lift_with_pid(0);
+  pros::delay(1300);
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  botLift.move_lift_with_pid(5700);
+  pros::delay(990);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-60_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-11.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  // droping pin and cup onto pin already place in podium
+  pros::delay(1000);
+  botClaw.set_status(ClawClass::GrabberState::OPEN);
+  pros::delay(250);
+  // going to get the right pin
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  botLift.move_lift_with_pid(3100);
+  chassis.pid_turn_set(10_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-13.2, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-42_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-18_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  botLift.move_lift_with_pid(0);
+  pros::delay(1300);
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  botLift.move_lift_with_pid(3500);
+  pros::delay(500);
+  set_scoring_to(SCORE_HIGH);
+  pros::delay(500);
+  // driving back to place pin and cup on to podium again
+  chassis.pid_turn_set(-169_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-12.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  botLift.move_lift_with_pid(3300);
+  pros::delay(1500);
+  botClaw.set_status(ClawClass::GrabberState::OPEN);
 }
