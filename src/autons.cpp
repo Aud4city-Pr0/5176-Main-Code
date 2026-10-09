@@ -159,7 +159,7 @@ void top_side_alt_auto() {
 // skills 
 void skills_auto() {
   // diriving to red podium
-  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  /* botClaw.set_status(ClawClass::GrabberState::CLOSE);
   set_scoring_to(SCORE);
   chassis.pid_drive_set(-3.5_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -208,16 +208,48 @@ void skills_auto() {
   botLift.move_lift_with_pid(0);
   pros::delay(1300);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  botLift.move_lift_with_pid(3500);
+  botLift.move_lift_with_pid(2800);
   pros::delay(500);
   set_scoring_to(SCORE_HIGH);
   pros::delay(500);
   // driving back to place pin and cup on to podium again
-  chassis.pid_turn_set(-169_deg, TURN_SPEED);
+  chassis.pid_turn_set(-168_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-12.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-12.25_in, DRIVE_SPEED);
   chassis.pid_wait();
-  botLift.move_lift_with_pid(3300);
   pros::delay(1500);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
+  // turning to matchload
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait(); */
+  chassis.drive_angle_set(-90);
+  chassis.pid_drive_set(27.7_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  set_scoring_to(MATCHLOAD_MED);
+  pros::delay(500);
+  set_scoring_to(MATCHLOAD);
+  pros::delay(500);
+  chassis.pid_drive_set(-11.5_in, 85);
+  chassis.pid_wait();
+  botClaw.set_status(ClawClass::GrabberState::CLOSE);
+  pros::delay(400);
+  // dirivng forward
+  chassis.pid_drive_set(11_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  set_scoring_to(MATCHLOAD_MED);
+  pros::delay(400);
+  botLift.move_lift_with_pid(5000);
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
 }
