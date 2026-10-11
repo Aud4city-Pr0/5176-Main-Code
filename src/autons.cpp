@@ -206,19 +206,20 @@ void skills_auto() {
   chassis.pid_drive_set(-18_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(1300);
+  pros::delay(1600);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   botLift.move_lift_with_pid(2800);
   pros::delay(500);
   set_scoring_to(SCORE_HIGH);
   pros::delay(500);
   // driving back to place pin and cup on to podium again
-  chassis.pid_turn_set(-168_deg, TURN_SPEED);
+  chassis.pid_turn_set(-170_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-12.25_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-11.95_in, DRIVE_SPEED);
   chassis.pid_wait();
-  pros::delay(1500);
+  pros::delay(1000);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
+  pros::delay(500);
   // turning to matchload
   chassis.pid_drive_set(7_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -230,26 +231,32 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_drive_set(-8_in, DRIVE_SPEED);
   chassis.pid_wait(); */
+  // setup for matchload
   chassis.drive_angle_set(-90);
-  chassis.pid_drive_set(27.7_in, DRIVE_SPEED);
+  pros::delay(700);
+  chassis.pid_drive_set(23_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  botLift.move_lift_with_pid(0);
+  chassis.pid_turn_set(-195_deg, TURN_SPEED);
   chassis.pid_wait();
   set_scoring_to(MATCHLOAD_MED);
   pros::delay(500);
   set_scoring_to(MATCHLOAD);
   pros::delay(500);
-  chassis.pid_drive_set(-11.5_in, 85);
+  chassis.pid_drive_set(-16.5_in, 55);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   pros::delay(400);
   // dirivng forward
-  chassis.pid_drive_set(11_in, DRIVE_SPEED);
+  chassis.pid_drive_set(14.45_in, DRIVE_SPEED);
   chassis.pid_wait();
-  set_scoring_to(MATCHLOAD_MED);
+  set_scoring_to(MATCHLOAD_HIGH);
   pros::delay(400);
-  botLift.move_lift_with_pid(5000);
-  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  botLift.move_lift_with_pid(3000);
+  chassis.pid_turn_set(-90.5_deg, TURN_SPEED);
   chassis.pid_wait();
-
+  pros::delay(1500);
+  chassis.pid_drive_set(-21.5_in, 85);
+  chassis.pid_wait();
+  botLift.disable_pid();
 }
