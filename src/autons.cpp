@@ -174,7 +174,7 @@ void skills_auto() {
   set_scoring_to(SCORE, 450);
   chassis.pid_drive_set(9.75_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(42_deg, TURN_SPEED);
+  chassis.pid_turn_set(43.5_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -206,16 +206,16 @@ void skills_auto() {
   chassis.pid_drive_set(-18_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(1600);
+  pros::delay(2200);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   botLift.move_lift_with_pid(2800);
   pros::delay(500);
   set_scoring_to(SCORE_HIGH);
   pros::delay(500);
   // driving back to place pin and cup on to podium again
-  chassis.pid_turn_set(-170_deg, TURN_SPEED);
+  chassis.pid_turn_set(-171_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-11.45_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-11_in, DRIVE_SPEED);
   chassis.pid_wait();
   pros::delay(1000);
   botLift.move_lift_with_pid(1600);
@@ -236,7 +236,7 @@ void skills_auto() {
   // setup for matchload
   //chassis.drive_angle_set(-90);
   pros::delay(700);
-  chassis.pid_drive_set(23_in, DRIVE_SPEED);
+  chassis.pid_drive_set(26_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
   chassis.pid_turn_set(-195_deg, TURN_SPEED);
