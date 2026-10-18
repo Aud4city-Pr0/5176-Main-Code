@@ -161,22 +161,24 @@ void skills_auto() {
   // diriving to red podium
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   set_scoring_to(SCORE);
+  botLift.move_lift_with_pid(250);
+  pros::delay(400);
   chassis.pid_drive_set(-3.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-55_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-8.2_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
-  pros::delay(400);
+  pros::delay(1000);
   botLift.move_lift_with_pid(3100);
   // getting a pin and cup to the left
   set_scoring_to(SCORE, 450);
-  chassis.pid_drive_set(9.75_in, DRIVE_SPEED);
+  chassis.pid_drive_set(10.25_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(43.5_deg, TURN_SPEED);
+  chassis.pid_turn_set(45.5_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-7_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-7.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
   pros::delay(1300);
@@ -187,12 +189,12 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(-60_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-11.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-10.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   // droping pin and cup onto pin already place in podium
-  pros::delay(1000);
+  pros::delay(1200);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
-  pros::delay(250);
+  pros::delay(500);
   // going to get the right pin
   chassis.pid_drive_set(9_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -201,9 +203,9 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_drive_set(-13.2, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(-44_deg, TURN_SPEED);
+  chassis.pid_turn_set(-42.5_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-19_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
   pros::delay(2200);
@@ -211,7 +213,7 @@ void skills_auto() {
   botLift.move_lift_with_pid(2800);
   pros::delay(500);
   set_scoring_to(SCORE_HIGH);
-  pros::delay(500);
+  pros::delay(990);
   // driving back to place pin and cup on to podium again
   chassis.pid_turn_set(-171_deg, TURN_SPEED);
   chassis.pid_wait();
