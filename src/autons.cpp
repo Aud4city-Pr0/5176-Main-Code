@@ -167,7 +167,7 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(-55_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-10_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-11_in, DRIVE_SPEED);
   chassis.pid_wait();
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   pros::delay(1000);
@@ -189,7 +189,7 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(-60_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-10.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-11_in, DRIVE_SPEED);
   chassis.pid_wait();
   // droping pin and cup onto pin already place in podium
   pros::delay(1200);
@@ -203,9 +203,9 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_drive_set(-13.2, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(-42.5_deg, TURN_SPEED);
+  chassis.pid_turn_set(-43_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-19_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-18_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
   pros::delay(2200);
@@ -217,7 +217,7 @@ void skills_auto() {
   // driving back to place pin and cup on to podium again
   chassis.pid_turn_set(-171_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-11_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-14_in, DRIVE_SPEED);
   chassis.pid_wait();
   pros::delay(1000);
   botLift.move_lift_with_pid(1600);
@@ -260,10 +260,42 @@ void skills_auto() {
   chassis.pid_turn_set(-90.5_deg, TURN_SPEED);
   chassis.pid_wait();
   pros::delay(1000);
-  chassis.pid_drive_set(-20_in, 85);
+  chassis.pid_drive_set(-21_in, 85);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
   pros::delay(800);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
+  chassis.pid_drive_set(-4_in, 35);
+  chassis.pid_wait();
+  chassis.pid_drive_set(4_in,  85);
+  chassis.pid_wait();
+  // driving to roller
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // setting claw and lift to zero
+  botLift.move_lift_with_pid(0);
+  pros::delay(500);
+  set_scoring_to(DEFAULT);
+  chassis.pid_drive_set(-30_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-21_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // roller time (gambling I LOVE GAMMBLING LETS GOO GAMBLING PART 2 ELETRIC BOOGALO)
+  chassis.pid_drive_set(40_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-7_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-10_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-45_in, DRIVE_SPEED);
+  chassis.pid_wait();
   botLift.disable_pid();
 }
