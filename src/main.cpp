@@ -69,17 +69,11 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
      // the auton functions (RED)
-     {"Mother of All MatchLoads M.O.A.M. (Skills Auto)\n\nHaha matchloader go brrrrrrrrrrrrrrrr", skills_auto},
-     {"Left Side Auto\n\n scores a three pin/30 point stack on the left side red goal.", left_side_auto},
-     {"Left Side Auto Alt\n\n[Insert description here]", left_side_alt_auto},
-     {"Bottom Side Auto\n\n[Insert description here]", bottom_side_auto},
-     {"Bottom Side Auto Alt\n\n[Insert description here]", bottom_side_alt_auto},
-     // the auton functions (BLUE)
-     {"Right Side Auto\n\n[Insert description here]", right_side_auto},
-     {"Right Side Auto Alt\n\n[Insert description here]", right_side_alt_auto},
-     {"Top Side Auto\n\n[Insert description here]", top_side_auto},
-     {"Top Side Auto Alt\n\n[Insert description here]", top_side_alt_auto}
-     // Skills auto
+     {"Horizontial Side Auto\n\n scores a ten pin/10 point stack on the left and right side red/blue goal.", left_side_auto},
+     {"Horizontial Side Auto Alt\n\n[Insert description here]", left_side_alt_auto},
+     {"Veritical Side Auto\n\nscores a ten pin/10 point stack on the bottom side red/blue goal.", bottom_side_auto},
+     {"Veritical Side Auto Alt\n\n[Insert description here]", bottom_side_alt_auto},
+     {"Mother of All MatchLoads M.O.A.M. (Skills Auto)\n\nHaha matchloader go brrrrrrrrrrrrrrrr", skills_auto}
   });
 
   // Initialize chassis and auton selector
