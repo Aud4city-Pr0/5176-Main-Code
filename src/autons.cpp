@@ -1,3 +1,4 @@
+#include "EZ-Template/tracking_wheel.hpp"
 #include "main.h"
 #include "pros/device.hpp"
 #include "pros/rtos.hpp"
@@ -97,7 +98,7 @@ void left_side_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(-88_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-10_in, 40);
+  chassis.pid_drive_set(-11_in, 40);
   chassis.pid_wait();
   pros::delay(350);
   // scoring the cup and pin
@@ -110,11 +111,11 @@ void left_side_auto() {
   chassis.pid_turn_set(180_deg, TURN_SPEED);
   chassis.pid_wait();
   // roller time (gambling I LOVE GAMMBLING LETS GOO GAMBLING)
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
@@ -158,7 +159,7 @@ void bottom_side_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(88_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-10_in, 40);
+  chassis.pid_drive_set(-11_in, 40);
   chassis.pid_wait();
   pros::delay(350);
   // scoring the cup and pin
@@ -171,11 +172,11 @@ void bottom_side_auto() {
   chassis.pid_turn_set(-180_deg, TURN_SPEED);
   chassis.pid_wait();
   // roller time (gambling I LOVE GAMMBLING LETS GOO GAMBLING)
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
@@ -223,10 +224,10 @@ void skills_auto() {
   chassis.pid_drive_set(-7.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(1300);
+  pros::delay(1800);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
-  botLift.move_lift_with_pid(5700);
-  pros::delay(990);
+  botLift.move_lift_with_pid(6000);
+  pros::delay(1000);
   chassis.pid_drive_set(6_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-60_deg, TURN_SPEED);
@@ -234,11 +235,12 @@ void skills_auto() {
   chassis.pid_drive_set(-11_in, DRIVE_SPEED);
   chassis.pid_wait();
   // droping pin and cup onto pin already place in podium
+  pros::delay(1000);
   botLift.move_lift_with_pid(2600);
   pros::delay(1200);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
-  botLift.move_lift_with_pid(1700);
-  pros::delay(350);
+  botLift.move_lift_with_pid(5200);
+  pros::delay(1000);
   chassis.pid_drive_set(1_in, DRIVE_SPEED);
   chassis.pid_wait();
   pros::delay(100);
@@ -255,10 +257,12 @@ void skills_auto() {
   chassis.pid_wait();
   chassis.pid_turn_set(-43_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-17.1_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-41_deg, TURN_SPEED);
   chassis.pid_wait();
   botLift.move_lift_with_pid(0);
-  pros::delay(2200);
+  pros::delay(2400);
   botClaw.set_status(ClawClass::GrabberState::CLOSE);
   botLift.move_lift_with_pid(2800);
   pros::delay(500);
@@ -274,6 +278,7 @@ void skills_auto() {
   pros::delay(500);
   botClaw.set_status(ClawClass::GrabberState::OPEN);
   pros::delay(500);
+  botLift.move_lift_with_pid(3500);
   // turning to matchload
   chassis.pid_drive_set(6.8_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -337,7 +342,7 @@ void skills_auto() {
   chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait();
   // roller time (gambling I LOVE GAMMBLING LETS GOO GAMBLING PART 2 ELETRIC BOOGALO)
-  chassis.pid_drive_set(38_in, DRIVE_SPEED);
+  chassis.pid_drive_set(42_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-7_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
