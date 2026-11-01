@@ -7,18 +7,17 @@
 
 // helper variables
 //------------------
-int positionState = 0;
-int postionStateClaw = 0;
-bool graberActive = false;
-bool waitForClaw = false;
-bool waitForArm  = false;
+//int positionState = 0;
+//int postionStateClaw = 0;
+//bool waitForClaw = false;
+//bool waitForArm  = false;
 
 
 // includes
 //-----------
 #include "mechanisums/intake.hpp"
 #include "mechanisums/lift.hpp"
-#include "mechanisums/claw.hpp"
+#include "mechanisums/legacy_mechs/claw.hpp"
 #include "pros/misc.h"
 #include "pros/rotation.hpp"
 #include "pros/screen.h"
@@ -46,7 +45,7 @@ void driver_control_intake() {
     }
 }
 
-void set_scoring_to(ScoreState score) {
+/* void set_scoring_to(ScoreState score) {
 
     if(score == ScoreState::DEFAULT) {
         // setting arm and claw to position zero
@@ -95,9 +94,9 @@ void set_scoring_to(ScoreState score) {
 
     
 
-}
+} */
 
-void set_scoring_to(ScoreState score, int customPosition) {
+/* void set_scoring_to(ScoreState score, int customPosition) {
 
     if(score == ScoreState::DEFAULT) {
         // setting arm and claw to position zero
@@ -141,7 +140,7 @@ void set_scoring_to(ScoreState score, int customPosition) {
 
     
 
-}
+} */
 
 void driver_control_lift() {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
@@ -163,33 +162,33 @@ void driver_control_lift() {
 
 void init_the_bot() {
     botLift.initalize();
-    botClawArm.initalize();
-    botClaw.initalize();
+    //botClawArm.initalize();
+    //botClaw.initalize();
 }
 
 void pid_task() {
     while (true) {
-        botClawArm.update_pid();
-        botClaw.update_pid();
+        //botClawArm.update_pid();
+        //botClaw.update_pid();
         botLift.update_pid();
 
         // runing after arm movement has completed and after all pids are updated
-        if(waitForArm && botClawArm.is_at_target()) {
+        /* if(waitForArm && botClawArm.is_at_target()) {
             botClaw.set_claw_position(postionStateClaw);
             waitForArm = false;
-        }
+        } */
 
         // runing after claw movemnet has finished and after all pids are updated
-        if(waitForClaw && botClaw.is_at_target()) {
+        /* if(waitForClaw && botClaw.is_at_target()) {
             botClawArm.move_to_position(positionState);
             waitForClaw = false;
-        }
+        } */
 
         pros::delay(10);
     }
 }
 
-void driver_control_arm() {
+/* void driver_control_arm() {
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
         // setting arm and claw to position zero
         positionState = 0;
@@ -240,4 +239,4 @@ void driver_control_arm() {
         // setting waitForArm to true
         waitForArm = true;  
     }
-}
+} */

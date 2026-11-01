@@ -7,7 +7,7 @@
 
 // File includes
 //--------------------
-#include "mechanisums/clawarm.hpp"
+#include "mechanisums/legacy_mechs/clawarm.hpp"
 #include "EZ-Template/PID.hpp"
 #include "EZ-Template/util.hpp"
 #include "pros/motors.hpp"
@@ -46,7 +46,7 @@ void ArmClass::arm::update_pid() {
 void ArmClass::arm::initalize() {
     armMotor->set_brake_mode(pros::v5::MotorBrake::hold);
     armMotor->tare_position();
-    armRotationSensor.reset_position();
+    armRotation->reset_position();
     ArmPID.exit_condition_set(5, 10);
 }
 

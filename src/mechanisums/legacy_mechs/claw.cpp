@@ -6,7 +6,7 @@
 //-----------------------------------------
 
 // File includes
-#include "mechanisums/claw.hpp"
+#include "mechanisums/legacy_mechs/claw.hpp"
 #include "pros/motors.hpp"
 #include "pros/rotation.h"
 #include "EZ-Template/piston.hpp"
