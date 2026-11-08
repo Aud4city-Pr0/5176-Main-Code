@@ -26,8 +26,8 @@
 #include "EZ-Template/util.hpp"
 
 // conversion functions
-int get_rotation_value(pros::Rotation rotSensor) {
-    int converted_val = rotSensor.get_angle() / 100;
+double get_rotation_value(pros::Rotation rotSensor) {
+    double converted_val = rotSensor.get_angle() / 100.0;
     //pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Current rotation %d", converted_val);
     return converted_val;
 }

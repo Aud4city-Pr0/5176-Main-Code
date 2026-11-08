@@ -23,8 +23,8 @@ extern bool waitForClaw;
 // init function for sensors and motors
 void init_the_bot();
 
-// returns current value of rotation sensor and divide it by 100 to convert it to normal degrees (eg. 36000/100 -> 360)
-int get_rotation_value(pros::Rotation rotSensor);
+// returns current value of rotation sensor and divide it by 100 to convert it to normal degrees (eg. 36,000/100.0 -> 360)
+double get_rotation_value(pros::Rotation rotSensor);
 
 // contains the driver conrtol code for intake
 void driver_control_intake();
