@@ -154,9 +154,11 @@ void driver_control_lift() {
     }
 
     if(liftBumper.get_value() == 0) {
-        botLift.liftMotor->set_brake_mode(pros::MotorBrake::coast);
+        motorLiftOne.set_brake_mode(pros::MotorBrake::coast);
+        motorLiftTwo.set_brake_mode(pros::MotorBrake::coast);
     } else {
-        botLift.liftMotor->set_brake_mode(pros::MotorBrake::hold);
+        motorLiftOne.set_brake_mode(pros::MotorBrake::hold);
+        motorLiftTwo.set_brake_mode(pros::MotorBrake::hold);
     }
 }
 

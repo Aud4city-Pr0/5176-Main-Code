@@ -27,14 +27,17 @@ namespace LiftClass {
         int MAX_HEIGHT = 0;
         ez::PID CascadePID{0.95, 0, 1.7, 0, "Cascade"};
         bool isUsingPID = false;
+        pros::Motor* liftMotorA;
+        pros::Motor* liftMotorB;
 
         // external variables or functions that can be used or changed by other classes or code in main.
         public:
-        pros::Motor* liftMotor;
+        
         // initalizer/constructor function that creates a intake object by taking in one motor and a default speed, also takes in a max height in mm for the lift pid.
-        lift(pros::Motor &mainLiftMotor, int speed, int max_height) {
+        lift(pros::Motor &mainLiftMotor, pros::Motor &secondLiftMotor,int speed, int max_height) {
             //TODO: add distance sensor parameter
-            liftMotor = &mainLiftMotor;
+            liftMotorA = &mainLiftMotor;
+            liftMotorB = &secondLiftMotor;
             defaultSpeed = speed;
             MAX_HEIGHT = max_height;
         }

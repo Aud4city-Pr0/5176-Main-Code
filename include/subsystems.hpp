@@ -20,7 +20,8 @@ inline pros::adi::DigitalIn liftBumper('a');
 // motors
 inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(15, pros::v5::MotorGears::green);
-inline pros::Motor mainMotorLift(11, pros::v5::MotorGears::green);
+inline pros::Motor motorLiftOne(11, pros::v5::MotorGears::green);
+inline pros::Motor motorLiftTwo(12, pros::v5::MotorGears::green);
 //inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
 //inline pros::Motor mainClawMotor(13, pros::v5::MotorGears::green);
 
@@ -29,6 +30,6 @@ inline ez::Piston clawPisiton('h', true);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);
-inline LiftClass::lift botLift(mainMotorLift, 12000, 1200000000);
+inline LiftClass::lift botLift(motorLiftOne, motorLiftTwo,12000, 1200000000);
 //inline ArmClass::arm botClawArm(mainArmMotor, armRotationSensor);
 //inline ClawClass::claw botClaw(mainClawMotor, clawRotationSensor, clawPisiton);

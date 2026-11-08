@@ -16,16 +16,21 @@ void LiftClass::lift::move_lift_with_status(liftState state) {
     // checking to see if state is equal to LOWER
     if(state == liftState::LOWER) {
         // if state is LOWER, then reverse the motor to spin down and run at default speed
-        lift::liftMotor->set_reversed(true);
-        lift::liftMotor->move_voltage(lift::defaultSpeed);
+        lift::liftMotorA->set_reversed(true);
+        lift::liftMotorB->set_reversed(false);
+        lift::liftMotorA->move_voltage(lift::defaultSpeed);
+        lift::liftMotorB->move_voltage(lift::defaultSpeed);
         // checking to see if state is equal to RAISE
     } else if (state == liftState::RAISE) {
         // if state is RAISE, then don't reverse the motor to spin up and run at default speed
-        lift::liftMotor->set_reversed(false);
-        lift::liftMotor->move_voltage(lift::defaultSpeed);
+        lift::liftMotorA->set_reversed(false);
+        lift::liftMotorB->set_reversed(true);
+        lift::liftMotorA->move_voltage(lift::defaultSpeed);
+        lift::liftMotorB->move_voltage(lift::defaultSpeed);
     } else if(state == liftState::STOP) {
         // stoping motor if state is set to STOP
-        lift::liftMotor->brake();
+        lift::liftMotorA->brake();
+        lift::liftMotorB->brake();
     }
 }
 
@@ -52,17 +57,19 @@ void LiftClass::lift::update_pid() {
         return;
     }
     // getting motor encoder position
-    int motor_current_value = lift::liftMotor->get_position();
+    int motor_current_value = lift::liftMotorA->get_position();
     // computing pid output speed
     double output = lift::CascadePID.compute(motor_current_value);
     // moving motor
-    lift::liftMotor->move(output);
+    lift::liftMotorA->move(output);
+    lift::liftMotorB->move(output);
 }
 
 void LiftClass::lift::initalize() {
     // initalizes lift motor, pid and sensors
-    lift::liftMotor->tare_position();
+    lift::liftMotorA->tare_position();
     lift::CascadePID.exit_condition_set(5, 10);
     // setting lift braking to hold so that we can keep our position
-    lift::liftMotor->set_brake_mode(pros::MotorBrake::coast);
+    lift::liftMotorA->set_brake_mode(pros::MotorBrake::coast);
+    lift::liftMotorB->set_brake_mode(pros::MotorBrake::coast);
 }
