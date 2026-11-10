@@ -153,13 +153,13 @@ void driver_control_lift() {
         botLift.move_lift_with_status(LiftClass::liftState::STOP);
     }
 
-    if(liftBumper.get_value() == 0) {
+    /*if(liftBumper.get_value() == 0) {
         motorLiftOne.set_brake_mode(pros::MotorBrake::coast);
         motorLiftTwo.set_brake_mode(pros::MotorBrake::coast);
     } else {
         motorLiftOne.set_brake_mode(pros::MotorBrake::hold);
         motorLiftTwo.set_brake_mode(pros::MotorBrake::hold);
-    }
+    } */
 }
 
 void init_the_bot() {

@@ -176,6 +176,7 @@ void ez_screen_task() {
           screen_print_tracker(chassis.odom_tracker_right, "r", 5);
           screen_print_tracker(chassis.odom_tracker_back, "b", 6);
           screen_print_tracker(chassis.odom_tracker_front, "f", 7);
+          // TODO: printout lift rotation values
         }
       }
     }
@@ -264,7 +265,7 @@ void opcontrol() {
 
     // driver code functions from helpers.hpp
     //driver_control_intake();
-    //driver_control_lift();
+    driver_control_lift();
     //driver_control_arm();
     clawPisiton.button_toggle(master.get_digital(DIGITAL_A));
 
