@@ -7,6 +7,19 @@
 // Description: Contains some helper functions for the robot
 //-----------------------------------------
 
+// helper enums
+//---------------
+enum CLAW {
+    Open = 0,
+    Close = 1
+};
+
+enum ROLLER {
+    Down = 0,
+    Up = 1
+};
+
+
 // scoring state enum
 enum ScoreState {
     DEFAULT = 0,
@@ -37,6 +50,12 @@ void pid_task();
 
 // contains the driver control code for the claw arm
 void driver_control_arm();
+
+// sets claw pistion state
+void set_claw_to(CLAW clawState);
+
+// sets roller pistion
+void set_roller_to(ROLLER rollerState);
 
 // method for moving arm and claw in auto via one line of code
 void set_scoring_to(ScoreState score);

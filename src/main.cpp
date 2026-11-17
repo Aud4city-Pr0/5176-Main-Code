@@ -268,6 +268,7 @@ void opcontrol() {
     driver_control_lift();
     //driver_control_arm();
     clawPisiton.button_toggle(master.get_digital(DIGITAL_A));
+    rollerPisition.button_toggle(master.get_digital(DIGITAL_LEFT));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

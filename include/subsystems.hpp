@@ -10,6 +10,7 @@
 #include "mechanisums/lift.hpp"
 #include "mechanisums/legacy_mechs/clawarm.hpp"
 #include "mechanisums/legacy_mechs/claw.hpp"
+#include "pros/rotation.hpp"
 extern Drive chassis;
 
 // Your motors, sensors, etc. should go here.  Below are examples
@@ -21,12 +22,13 @@ inline pros::adi::DigitalIn liftBumper('a');
 inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(15, pros::v5::MotorGears::green);
 inline pros::Motor motorLiftOne(11, pros::v5::MotorGears::green);
-inline pros::Motor motorLiftTwo(12, pros::v5::MotorGears::green);
+inline pros::Motor motorLiftTwo(20, pros::v5::MotorGears::green);
 //inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
 //inline pros::Motor mainClawMotor(13, pros::v5::MotorGears::green);
 
 // pnematics
 inline ez::Piston clawPisiton('h', true);
+inline ez::Piston rollerPisition('g', false);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);

@@ -45,6 +45,24 @@ void driver_control_intake() {
     }
 }
 
+// controlling claw with enum
+void set_claw_to(CLAW clawState) {
+    if(clawState == CLAW::Open) {
+        clawPisiton.set(true);
+    } else if(clawState == CLAW::Close) {
+        clawPisiton.set(false);   
+    }
+}
+
+// controlling roller with enum
+void set_roller_to(ROLLER rollerState) {
+    if(rollerState == ROLLER::Up) {
+        clawPisiton.set(true);
+    } else if(rollerState == ROLLER::Down) {
+        clawPisiton.set(false);   
+    }
+}
+
 /* void set_scoring_to(ScoreState score) {
 
     if(score == ScoreState::DEFAULT) {
