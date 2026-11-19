@@ -264,7 +264,7 @@ void opcontrol() {
     // . . .
 
     // driver code functions from helpers.hpp
-    //driver_control_intake();
+    driver_control_intake();
     driver_control_lift();
     //driver_control_arm();
     clawPisiton.button_toggle(master.get_digital(DIGITAL_A));
