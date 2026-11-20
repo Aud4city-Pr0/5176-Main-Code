@@ -28,7 +28,7 @@ inline pros::Motor motorLiftTwo(20, pros::v5::MotorGears::green);
 
 // pnematics
 inline ez::Piston clawPisiton('h', true);
-inline ez::Piston rollerPisition('g', false);
+inline ez::Piston rollerPisition('f', false);
 
 // mechansiums
 inline IntakeClass::intake botIntake(intakeA, intakeB, 10000);
