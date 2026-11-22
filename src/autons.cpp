@@ -61,7 +61,6 @@ void default_constants() {
 // this section will contain all of our autos like match auto (15 second), alternate match auto (15 second), elim auto (15 second) and skills (60 second)
 
 // Competion autos
-// red side autos
 void left_side_auto() {
   // enabling lift pid
   botLift.enable_pid();
@@ -190,10 +189,6 @@ void left_side_alt_auto() {
 void bottom_side_alt_auto() {
   // code here
 }
-
-// blue side autos
-
-// alternate blue side autos
 
 //TODO: add elim autos for red and blue later
 
