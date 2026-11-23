@@ -1,3 +1,5 @@
+#include <cmath>
+#include <string>
 #include "EZ-Template/tracking_wheel.hpp"
 #include "main.h"
 #include "pros/device.hpp"
@@ -32,12 +34,12 @@ void default_constants() {
   chassis.pid_odom_boomerang_constants_set(5.8, 0.0, 32.5);  // Angular control for boomerang motions
 
   // Exit conditions
-  chassis.pid_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
+  chassis.pid_turn_exit_condition_set(90_ms, 3_deg, 85_ms, 7_deg, 100_ms, 100_ms);
   chassis.pid_swing_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
   chassis.pid_odom_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 750_ms);
   chassis.pid_odom_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 750_ms);
-  chassis.pid_turn_chain_constant_set(3_deg);
+  chassis.pid_turn_chain_constant_set(7_deg);
   chassis.pid_swing_chain_constant_set(5_deg);
   chassis.pid_drive_chain_constant_set(3_in);
 
@@ -64,14 +66,87 @@ void default_constants() {
 void left_side_auto() {
   // enabling lift pid
   botLift.enable_pid();
-  // driving out before turn
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  set_claw_to(CLAW::Close);
+  pros::delay(100);
+  botIntake.set_status(false);
+  botLift.move_lift_with_pid(900);
+  // driving out to setup for roller
+  // deploying roller
+  set_roller_to(ROLLER::Up);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // driving to roller
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  set_roller_to(ROLLER::Down);
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(90_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-18_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(100);
+  pros::delay(300);
+  set_claw_to(CLAW::Open);
+  pros::delay(300);
+  // driving reverse
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  set_claw_to(CLAW::Close);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(35_deg, 120);
+  chassis.pid_wait_quick();
+  // seting lift and claw for first cup and pin
+  botLift.move_lift_with_pid(0);
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-6_in,30);
+  chassis.pid_wait_quick();
+  botIntake.set_status(false);
+  chassis.pid_turn_set(165_deg, 120);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(1300);
+  pros::delay(250);
+  chassis.pid_drive_set(-12_in, 80);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(100);
+  pros::delay(150);
+  set_claw_to(CLAW::Open);
+  // getting and scoring second pin and cup
+  chassis.pid_drive_set(13.5_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  set_claw_to(CLAW::Close);
+  botLift.move_lift_with_pid(0);
+  chassis.pid_turn_set(122.8_deg, 120);
+  chassis.pid_wait_quick();
+  // turning intake on
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-10_in, 30);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(2100);
+  botIntake.set_status(false);
+  // setting and scoring
+  chassis.pid_turn_set(-100_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-14_in, 60);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(1000);
+  pros::delay(250);
+  set_claw_to(CLAW::Open);
+  chassis.pid_drive_set(3_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  pros::delay(1000);
+  // droping lift
+  /* chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  // moving claw and arm
-  //set_scoring_to(SCORE);
-  pros::delay(500);
   // driving to score
   chassis.pid_drive_set(-17.8_in, 85);
   chassis.pid_wait();
@@ -115,9 +190,9 @@ void left_side_auto() {
   chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
-  chassis.pid_wait_quick();
+  //chassis.pid_wait_quick();
   //set_scoring_to(DEFAULT);
-  botLift.disable_pid();
+  */botLift.disable_pid();
 
 }
 

@@ -21,8 +21,8 @@ inline pros::adi::DigitalIn liftBumper('a');
 // motors
 inline pros::Motor intakeA(14, pros::v5::MotorGears::green);
 inline pros::Motor intakeB(15, pros::v5::MotorGears::green);
-inline pros::Motor motorLiftOne(11, pros::v5::MotorGears::green);
-inline pros::Motor motorLiftTwo(20, pros::v5::MotorGears::green);
+inline pros::Motor motorLiftOne(-11, pros::v5::MotorGears::red);
+inline pros::Motor motorLiftTwo(20, pros::v5::MotorGears::red);
 //inline pros::Motor mainArmMotor(-12, pros::v5::MotorGears::green);
 //inline pros::Motor mainClawMotor(13, pros::v5::MotorGears::green);
 

@@ -48,18 +48,18 @@ void driver_control_intake() {
 // controlling claw with enum
 void set_claw_to(CLAW clawState) {
     if(clawState == CLAW::Open) {
-        clawPisiton.set(true);
+        clawPisiton.set(false);
     } else if(clawState == CLAW::Close) {
-        clawPisiton.set(false);   
+        clawPisiton.set(true);   
     }
 }
 
 // controlling roller with enum
 void set_roller_to(ROLLER rollerState) {
     if(rollerState == ROLLER::Up) {
-        clawPisiton.set(true);
+        rollerPisition.set(true);
     } else if(rollerState == ROLLER::Down) {
-        clawPisiton.set(false);   
+        rollerPisition.set(false);   
     }
 }
 
