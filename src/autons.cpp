@@ -141,7 +141,8 @@ void left_side_auto() {
   set_claw_to(CLAW::Open);
   chassis.pid_drive_set(3_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
-  pros::delay(1000);
+  botLift.disable_pid();
+  // OLD CODE
   // droping lift
   /* chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -192,7 +193,7 @@ void left_side_auto() {
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   //chassis.pid_wait_quick();
   //set_scoring_to(DEFAULT);
-  */botLift.disable_pid();
+  */
 
 }
 
@@ -200,7 +201,84 @@ void bottom_side_auto() {
   // code here
   // enabling lift pid
   botLift.enable_pid();
-  // driving out before turn
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  set_claw_to(CLAW::Close);
+  pros::delay(100);
+  botIntake.set_status(false);
+  botLift.move_lift_with_pid(900);
+  // driving out to setup for roller
+  // deploying roller
+  set_roller_to(ROLLER::Up);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // driving to roller
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  set_roller_to(ROLLER::Down);
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(-90_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-18_in, 118);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(100);
+  pros::delay(300);
+  set_claw_to(CLAW::Open);
+  pros::delay(300);
+  // driving reverse
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  set_claw_to(CLAW::Close);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(-35_deg, 120);
+  chassis.pid_wait_quick();
+  // seting lift and claw for first cup and pin
+  botLift.move_lift_with_pid(0);
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-6_in,30);
+  chassis.pid_wait_quick();
+  botIntake.set_status(false);
+  chassis.pid_turn_set(-165_deg, 120);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(1300);
+  pros::delay(250);
+  chassis.pid_drive_set(-12_in, 80);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(100);
+  pros::delay(150);
+  set_claw_to(CLAW::Open);
+  // getting and scoring second pin and cup
+  chassis.pid_drive_set(13.5_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  set_claw_to(CLAW::Close);
+  botLift.move_lift_with_pid(0);
+  chassis.pid_turn_set(-122.8_deg, 120);
+  chassis.pid_wait_quick();
+  // turning intake on
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_drive_set(-20_in, 118);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-10_in, 30);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(2100);
+  botIntake.set_status(false);
+  // setting and scoring
+  chassis.pid_turn_set(100_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-14_in, 60);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(1000);
+  pros::delay(250);
+  set_claw_to(CLAW::Open);
+  chassis.pid_drive_set(3_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  botLift.disable_pid();
+  // OLD CODE
+  /* // driving out before turn
   chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, TURN_SPEED);
@@ -253,7 +331,7 @@ void bottom_side_auto() {
   chassis.pid_drive_set(-10_in, DRIVE_SPEED);
   chassis.pid_wait_quick();
   //set_scoring_to(DEFAULT);
-  botLift.disable_pid();
+  */ 
 }
 
 // alternate red side autos
@@ -262,7 +340,88 @@ void left_side_alt_auto() {
 }
 
 void bottom_side_alt_auto() {
-  // code here
+  // enabling pid
+  botLift.enable_pid();
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  set_claw_to(CLAW::Close);
+  pros::delay(100);
+  botIntake.set_status(false);
+  botLift.move_lift_with_pid(900);
+  // driving out to setup for roller
+  // deploying roller
+  set_roller_to(ROLLER::Up);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // driving to roller
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  set_roller_to(ROLLER::Down);
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(-90_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-18_in, 118);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(100);
+  pros::delay(300);
+  set_claw_to(CLAW::Open);
+  pros::delay(300);
+  // dirivng and getting pin
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // setting up lift and claw
+  botLift.move_lift_with_pid(0);
+  set_claw_to(CLAW::Close);
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_turn_set(-142_deg, 120);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-15_in, 118);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-8.7_in, 30);
+  chassis.pid_wait_quick();
+  botIntake.set_status(false);
+  chassis.pid_drive_set(19_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // setting lift height
+  botLift.move_lift_with_pid(1300);
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-9_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // scoring the cup and pin
+  botLift.move_lift_with_pid(100);
+  pros::delay(200);
+  set_claw_to(CLAW::Open);
+  //chassis.pid_drive_set(3_in, DRIVE_SPEED);
+  //chassis.pid_wait_quick();
+  // code for defensive auto
+  chassis.pid_drive_set(18_in, 127);
+  chassis.pid_wait_quick();
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
+  chassis.pid_wait_quick();
+  botLift.move_lift_with_pid(0);
+  set_claw_to(CLAW::Close);
+  botIntake.set_intake_direction(IntakeClass::BACKAWRD);
+  botIntake.set_status(true);
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  chassis.pid_drive_set(-8_in, 30);
+  chassis.pid_wait_quick();
+  botIntake.set_status(false);
+  // setting up lift
+  botLift.move_lift_with_pid(1800);
+  chassis.pid_drive_set(-20_in,65);
+  chassis.pid_wait_quick();
+  // activating le block out tech
+  botLift.move_lift_with_pid(400);
+  pros::delay(150);
+  set_claw_to(CLAW::Open);
+  chassis.pid_drive_set(3_in, DRIVE_SPEED);
+  chassis.pid_wait_quick();
+  // disabling pid
+  botLift.disable_pid();
 }
 
 //TODO: add elim autos for red and blue later
