@@ -69,11 +69,14 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
      // the auton functions (RED)
-     {"Horizontial Side Auto\n\n scores a ten pin/10 point stack on the left and right side red/blue goal.", left_side_auto},
-     {"Horizontial Side Auto Alt\n\n[Insert description here]", left_side_alt_auto},
-     {"Veritical Side Auto\n\nscores a ten pin/10 point stack on the bottom side red/blue goal.", bottom_side_auto},
-     {"Veritical Side Auto Alt\n\n[Insert description here]", bottom_side_alt_auto},
-     {"Mother of All MatchLoads M.O.A.M. (Skills Auto)\n\nHaha matchloader go brrrrrrrrrrrrrrrr", skills_auto}
+     {"Mother of All MatchLoads M.O.A.M. (Skills Auto)\n\nHaha matchloader go brrrrrrrrrrrrrrrr", skills_auto},
+     {"Horizontial Side Auto\n\nScores a three pin/30 point stack on the left and right side red/blue goal.", left_side_auto},
+     {"Horizontial Side Auto Alt\n\nScores one pin/10 point stack on the left and right side red/blue goal.", left_side_alt_auto},
+     {"Veritical Side Auto\n\nScores a three pin/30 point stack on the left and right side red/blue goal.", bottom_side_auto},
+     {"Veritical Side Auto Alt\n\nScores one pin/10 point stack on the left and right side red/blue goal.", bottom_side_alt_auto},
+     {"Horizontial Side Defensive Auto\n\nScores one pin/10 point stack on the left and right side red/blue goal and deines middle from opposing aliance.", left_side_defensive_auto},
+     {"Vertical Side Defensive Auto\n\nScores one pin/10 point stack on the left and right side red/blue goal and deines middle from opposing aliance.", bottom_side_defensive_auto}
+     
   });
 
   // Initialize chassis and auton selector

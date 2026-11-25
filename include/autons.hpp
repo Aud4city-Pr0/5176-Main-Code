@@ -10,6 +10,8 @@ void left_side_alt_auto();
 
 void bottom_side_alt_auto();
 
-//TODO: add elim autos for red and blue later
+void bottom_side_defensive_auto();
+
+void left_side_defensive_auto();
 
 void skills_auto();
